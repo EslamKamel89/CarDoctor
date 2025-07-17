@@ -25,9 +25,9 @@ defineProps<Props>();
     <DropdownMenuSeparator />
     <DropdownMenuGroup>
         <DropdownMenuItem :as-child="true">
-            <Link class="block w-full" :href="route('profile.edit')" prefetch as="button">
+            <Link class="block w-full" :href="route('appearance')" prefetch as="button">
                 <Settings class="mr-2 h-4 w-4" />
-                Settings
+                الإعدادات
             </Link>
         </DropdownMenuItem>
     </DropdownMenuGroup>
@@ -35,7 +35,7 @@ defineProps<Props>();
     <DropdownMenuItem :as-child="true">
         <Link class="block w-full" method="post" :href="route('logout')" @click="handleLogout" as="button">
             <LogOut class="mr-2 h-4 w-4" />
-            Log out
+            تسجيل الخروج
         </Link>
     </DropdownMenuItem>
 </template>
