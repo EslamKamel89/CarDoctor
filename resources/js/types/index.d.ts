@@ -1,6 +1,6 @@
 import type { LucideIcon } from 'lucide-vue-next';
 import type { Config } from 'ziggy-js';
-import { Permission } from './app';
+import { Permission, Role } from './app';
 
 export interface Auth {
     user: User;
@@ -33,6 +33,8 @@ export interface User {
     email: string;
     avatar?: string;
     email_verified_at: string | null;
+    roles: Role[];
+    permissions: Permission[];
     created_at: string;
     updated_at: string;
 }
