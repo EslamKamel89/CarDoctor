@@ -7,7 +7,7 @@ import { can } from '@/helpers/can';
 import AppLayout from '@/layouts/AppLayout.vue';
 import { BreadcrumbItem, User } from '@/types';
 import { Head, Link, router } from '@inertiajs/vue3';
-import { Eye, Pen, Plus, Trash2 } from 'lucide-vue-next';
+import { Eye, Plus, Trash2 } from 'lucide-vue-next';
 import Show from './Show.vue';
 const props = defineProps<{
     users: User[];
