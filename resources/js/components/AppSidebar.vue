@@ -3,18 +3,20 @@ import NavFooter from '@/components/NavFooter.vue';
 import NavMain from '@/components/NavMain.vue';
 import NavUser from '@/components/NavUser.vue';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
+import { can } from '@/helpers/can';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/vue3';
-import { LayoutGrid } from 'lucide-vue-next';
+import { KeyRound, LayoutGrid, Users } from 'lucide-vue-next';
+import { onMounted, ref } from 'vue';
 import AppLogo from './AppLogo.vue';
 
-const mainNavItems: NavItem[] = [
+const mainNavItems = ref<NavItem[]>([
     {
         title: 'الأحصائيات',
         href: '/dashboard',
         icon: LayoutGrid,
     },
-];
+]);
 
 const footerNavItems: NavItem[] = [
     // {
@@ -28,6 +30,23 @@ const footerNavItems: NavItem[] = [
     //     icon: BookOpen,
     // },
 ];
+onMounted(() => {
+    // console.log({ test: can('users.view') });
+    if (can('users.view')) {
+        mainNavItems.value.push({
+            title: 'Users',
+            href: '/users',
+            icon: Users,
+        });
+    }
+    if (can('roles.view')) {
+        mainNavItems.value.push({
+            title: 'Roles',
+            href: '/roles',
+            icon: KeyRound,
+        });
+    }
+});
 </script>
 
 <template>
