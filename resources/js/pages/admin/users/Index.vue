@@ -7,46 +7,50 @@ import { can } from '@/helpers/can';
 import AppLayout from '@/layouts/AppLayout.vue';
 import { BreadcrumbItem, User } from '@/types';
 import { Head, Link, router } from '@inertiajs/vue3';
-import { Eye, Plus, Trash2 } from 'lucide-vue-next';
+import { Eye, Pen, Plus, Trash2 } from 'lucide-vue-next';
 import Show from './Show.vue';
+
 const props = defineProps<{
     users: User[];
 }>();
+
 const breadcrumbs: BreadcrumbItem[] = [
     {
-        title: 'Dashboard',
+        title: 'لوحة التحكم',
         href: '/dashboard',
     },
 ];
+
 const deleteUser = (user: User) => {
-    const confirmAction = confirm('Are You sure you want to delete this user');
+    const confirmAction = confirm('هل أنت متأكد أنك تريد حذف هذا المستخدم؟');
     if (!confirmAction) return;
     router.delete(route('users.destroy', { user: user.id }));
 };
 </script>
+
 <template>
-    <Head title="Users Table" />
+    <Head title="جدول المستخدمين" />
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
             <div class="flex w-full justify-end">
                 <Link :href="route('users.create')" v-if="can('users.create')">
                     <Button type="button">
                         <Plus />
-                        <span>User</span>
+                        <span>مستخدم</span>
                     </Button>
                 </Link>
             </div>
             <Table>
                 <!--
-                    <TableCaption>A list of your recent invoices.</TableCaption>
+                    <TableCaption>قائمة بالفواتير الحديثة.</TableCaption>
                 -->
                 <TableHeader>
                     <TableRow>
-                        <TableHead class="w-[100px]"> Name </TableHead>
-                        <TableHead>Email</TableHead>
-                        <TableHead> Roles </TableHead>
-                        <TableHead> Created At </TableHead>
-                        <TableHead class="text-right"> Actions </TableHead>
+                        <TableHead class="w-[100px]"> الاسم </TableHead>
+                        <TableHead>البريد الإلكتروني</TableHead>
+                        <TableHead> الأدوار </TableHead>
+                        <TableHead> تاريخ الإنشاء </TableHead>
+                        <TableHead class="text-right"> الإجراءات </TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -63,10 +67,10 @@ const deleteUser = (user: User) => {
                         <TableCell> {{ user.created_at }}</TableCell>
                         <TableCell class="">
                             <div class="flex w-full items-center justify-end space-x-2">
-                                <Button v-if="can('users.delete')" @click="deleteUser(user)" type="button" variant="destructive" size="sm"
-                                    ><Trash2
-                                /></Button>
-                                <CustomDialog title="View User" description="">
+                                <Button v-if="can('users.delete')" @click="deleteUser(user)" type="button" variant="destructive" size="sm">
+                                    <Trash2 />
+                                </Button>
+                                <CustomDialog title="عرض المستخدم" description="">
                                     <template #trigger>
                                         <Button type="button" variant="default" size="sm"><Eye /></Button>
                                     </template>

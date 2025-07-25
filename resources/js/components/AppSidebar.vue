@@ -34,14 +34,15 @@ onMounted(() => {
     // console.log({ test: can('users.view') });
     if (can('users.view')) {
         mainNavItems.value.push({
-            title: 'Users',
+            title: 'المستخدمين،',
             href: '/users',
             icon: Users,
         });
     }
+
     if (can('roles.view')) {
         mainNavItems.value.push({
-            title: 'Roles',
+            title: 'الأدوار',
             href: '/roles',
             icon: KeyRound,
         });

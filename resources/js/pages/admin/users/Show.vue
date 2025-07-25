@@ -6,9 +6,11 @@ import { onMounted, ref } from 'vue';
 const props = defineProps<{
     userId: number;
 }>();
+
 const user = ref<User>();
 const fetchUser = async () => {};
 const isLoading = ref(false);
+
 onMounted(async () => {
     try {
         isLoading.value = true;
@@ -21,14 +23,15 @@ onMounted(async () => {
     }
 });
 </script>
+
 <template>
     <div class="space-y-4" v-if="!isLoading">
         <div>
-            <div class="text-xs font-thin">Name:</div>
+            <div class="text-xs font-thin">الاسم:</div>
             <div>{{ user?.name }}</div>
         </div>
         <div>
-            <div class="text-xs font-thin">Email:</div>
+            <div class="text-xs font-thin">البريد الإلكتروني:</div>
             <div>{{ user?.email }}</div>
         </div>
     </div>

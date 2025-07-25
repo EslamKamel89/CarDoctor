@@ -11,59 +11,65 @@ import { BreadcrumbItem } from '@/types';
 import { Role } from '@/types/app';
 import { Head, Link, router } from '@inertiajs/vue3';
 import { Eye, Pen, Plus, Trash2 } from 'lucide-vue-next';
+
 const props = defineProps<{
     roles: Role[];
 }>();
+
 const breadcrumbs: BreadcrumbItem[] = [
     {
-        title: 'Dashboard',
+        title: 'لوحة التحكم',
         href: '/dashboard',
     },
 ];
+
 const deleteRole = (role: Role) => {
-    const confirmAction = confirm('Are You sure you want to delete this role');
+    const confirmAction = confirm('هل أنت متأكد أنك تريد حذف هذا الدور؟');
     if (!confirmAction) return;
     router.delete(route('roles.destroy', { role: role.id }));
 };
 </script>
+
 <template>
-    <Head title="Roles Table" />
+    <Head title="جدول الأدوار" />
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
             <div class="flex w-full justify-end">
                 <Link :href="route('roles.create')" v-if="can('roles.create')">
                     <Button type="button">
                         <Plus />
-                        <span>Role</span>
+                        <span>دور</span>
                     </Button>
                 </Link>
             </div>
             <Table>
                 <TableHeader>
                     <TableRow>
-                        <TableHead class="w-[100px]"> Name </TableHead>
-                        <TableHead>Permissions</TableHead>
-                        <TableHead> Created At </TableHead>
-                        <TableHead class="text-right"> Actions </TableHead>
+                        <TableHead class="w-[100px]"> الاسم </TableHead>
+                        <TableHead>الصلاحيات</TableHead>
+                        <TableHead> تاريخ الإنشاء </TableHead>
+                        <TableHead class="text-right"> الإجراءات </TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
                     <TableRow v-for="role in roles" :key="role.id">
                         <TableCell class="font-medium">
-                            {{ role.name }}
+                            {{ role.name_ar }}
                         </TableCell>
                         <TableCell>
                             <div class="flex flex-wrap gap-1">
-                                <Badge v-for="permission in role.permissions" :key="permission.id" variant="secondary">{{ permission.name }}</Badge>
+                                <Badge v-for="permission in role.permissions" :key="permission.id" variant="secondary">{{
+                                    permission.name_ar
+                                }}</Badge>
                             </div>
                         </TableCell>
                         <TableCell> {{ formatDateTime(role.created_at) }}</TableCell>
                         <TableCell class="">
                             <div class="flex w-full items-center justify-end space-x-2">
-                                <Button v-if="can('roles.delete')" @click="deleteRole(role)" type="button" variant="destructive" size="sm"
-                                    ><Trash2
-                                /></Button>
-                                <CustomDialog title="View User" description="">
+                                <Button v-if="can('roles.delete')" @click="deleteRole(role)" type="button" variant="destructive" size="sm">
+                                    <Trash2 />
+                                </Button>
+                                <CustomDialog title="عرض الدور" description="">
                                     <template #trigger>
                                         <Button type="button" variant="default" size="sm"><Eye /></Button>
                                     </template>

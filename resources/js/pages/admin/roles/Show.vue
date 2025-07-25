@@ -7,8 +7,10 @@ import { onMounted, ref } from 'vue';
 const props = defineProps<{
     roleId: number;
 }>();
+
 const role = ref<Role>();
 const isLoading = ref(false);
+
 onMounted(async () => {
     try {
         isLoading.value = true;
@@ -21,20 +23,18 @@ onMounted(async () => {
     }
 });
 </script>
+
 <template>
     <div class="space-y-4" v-if="!isLoading">
         <div>
-            <div class="text-xs font-thin">Name:</div>
-            <div>{{ role?.name }}</div>
+            <div class="text-xs font-thin">الاسم:</div>
+            <div>{{ role?.name_ar }}</div>
         </div>
+
         <div>
-            <div class="text-xs font-thin">Guard Name:</div>
-            <div>{{ role?.guard_name }}</div>
-        </div>
-        <div>
-            <div class="text-xs font-thin">Permissons</div>
+            <div class="text-xs font-thin">الصلاحيات</div>
             <div class="mt-1 flex flex-wrap gap-1">
-                <Badge v-for="permission in role?.permissions" :key="permission.id" variant="secondary">{{ permission.name }}</Badge>
+                <Badge v-for="permission in role?.permissions" :key="permission.id" variant="secondary">{{ permission.name_ar }}</Badge>
             </div>
         </div>
     </div>
