@@ -13,60 +13,72 @@
 
 namespace App\Models{
 /**
- * @property int $id
- * @property string $name
- * @property string $guard_name
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string $name_ar
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Spatie\Permission\Models\Permission> $permissions
- * @property-read int|null $permissions_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Spatie\Permission\Models\Role> $roles
- * @property-read int|null $roles_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\User> $users
- * @property-read int|null $users_count
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission permission($permissions, $without = false)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission query()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission role($roles, $guard = null, $without = false)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission whereGuardName($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission whereNameAr($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission withoutPermission($permissions)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission withoutRole($roles, $guard = null)
+ * @method static \Database\Factories\BrandFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Brand newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Brand newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Brand query()
  */
-	class Permission extends \Eloquent {}
+	class Brand extends \Eloquent {}
 }
 
 namespace App\Models{
 /**
- * @property int $id
- * @property string $name
- * @property string $guard_name
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string $name_ar
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Spatie\Permission\Models\Permission> $permissions
- * @property-read int|null $permissions_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\User> $users
- * @property-read int|null $users_count
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Role newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Role newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Role permission($permissions, $without = false)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Role query()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Role whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Role whereGuardName($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Role whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Role whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Role whereNameAr($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Role whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Role withoutPermission($permissions)
+ * @method static \Database\Factories\CarModelFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CarModel newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CarModel newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CarModel query()
  */
-	class Role extends \Eloquent {}
+	class CarModel extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @method static \Database\Factories\CategoryFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Category newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Category newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Category query()
+ */
+	class Category extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @method static \Database\Factories\ClientFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Client newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Client newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Client query()
+ */
+	class Client extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @method static \Database\Factories\ClientVehicleFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ClientVehicle newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ClientVehicle newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ClientVehicle query()
+ */
+	class ClientVehicle extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @method static \Database\Factories\LabourFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Labour newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Labour newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Labour query()
+ */
+	class Labour extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @method static \Database\Factories\ProductFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Product newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Product newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Product query()
+ */
+	class Product extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -104,5 +116,15 @@ namespace App\Models{
  * @mixin \Eloquent
  */
 	class User extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @method static \Database\Factories\WarehouseFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Warehouse newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Warehouse newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Warehouse query()
+ */
+	class Warehouse extends \Eloquent {}
 }
 
