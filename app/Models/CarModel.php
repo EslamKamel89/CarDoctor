@@ -14,4 +14,9 @@ class CarModel extends Model {
         'name_en',
         'year_range',
     ];
+    protected function casts(): array {
+        return [
+            'user' => 'array',
+        ];
+    }
 }
