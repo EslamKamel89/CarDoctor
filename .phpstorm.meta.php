@@ -2407,7 +2407,10 @@ namespace PHPSTORM_META {
         registerArgumentsSet('middleware', 
 'web','api',);
         registerArgumentsSet('routes', 'telescope',
-'home','dashboard','appearance','login','logout','storage.local',);
+'home','dashboard','users.create','users.store','users.index',
+'users.show','users.edit','users.update','roles.create','roles.store',
+'roles.index','roles.show','roles.edit','roles.update',
+'appearance','login','logout','storage.local',);
         registerArgumentsSet('views', 
 'app','laravel-exceptions-renderer::components.card','laravel-exceptions-renderer::components.context','laravel-exceptions-renderer::components.editor','laravel-exceptions-renderer::components.header',
 'laravel-exceptions-renderer::components.icons.chevron-down','laravel-exceptions-renderer::components.icons.chevron-up','laravel-exceptions-renderer::components.icons.computer-desktop','laravel-exceptions-renderer::components.icons.moon','laravel-exceptions-renderer::components.icons.sun',
