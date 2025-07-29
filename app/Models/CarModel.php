@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property int $id
@@ -37,7 +40,29 @@ class CarModel extends Model {
     ];
     protected function casts(): array {
         return [
-            'user' => 'array',
+            'year_range' => 'array',
         ];
+    }
+    public function brand(): BelongsTo {
+        return $this->belongsTo(Brand::class);
+    }
+    public function clientVehicles(): HasMany {
+        return $this->hasMany(ClientVehicle::class);
+    }
+    public function products(): BelongsToMany {
+        return $this->belongsToMany(
+            Product::class,
+            'product_applicability',
+            'car_model_id',
+            'product_id',
+        )->withPivot('notes')->withTimestamps();
+    }
+    public function getNameAttribute(): string {
+        return app()->isLocale('ar') ? $this->name_ar : $this->name_en;
+    }
+    public function getYearRangeFormattedAttribute(): string {
+        if (!isset($this->year_range)) return '';
+        $years = (array) $this->year_range;
+        return count($years) > 1 ? "{$years[0]} -> {$years[1]}" : "{$years[0]} -> حتي الان  ";
     }
 }

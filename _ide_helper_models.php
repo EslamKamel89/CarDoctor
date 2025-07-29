@@ -27,10 +27,10 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Brand whereNameAr($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Brand whereNameEn($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Brand whereUpdatedAt($value)
- * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CarModel> $carModels
  * @property-read int|null $car_models_count
  * @property-read string $name
+ * @mixin \Eloquent
  */
 	class Brand extends \Eloquent {}
 }
@@ -56,6 +56,13 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CarModel whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CarModel whereYearRange($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\Brand $brand
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ClientVehicle> $clientVehicles
+ * @property-read int|null $client_vehicles_count
+ * @property-read string $name
+ * @property-read string $year_range_formatted
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
+ * @property-read int|null $products_count
  */
 	class CarModel extends \Eloquent {}
 }
