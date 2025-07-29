@@ -290,6 +290,10 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Warehouse wherePhone($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Warehouse whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read string $location
+ * @property-read string $name
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
+ * @property-read int|null $products_count
  */
 	class Warehouse extends \Eloquent {}
 }

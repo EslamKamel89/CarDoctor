@@ -35,6 +35,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property-read Category|null $parent
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
  * @property-read int|null $products_count
+ * @property-read mixed $name
  * @mixin \Eloquent
  */
 class Category extends Model {
