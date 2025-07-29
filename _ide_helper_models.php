@@ -27,6 +27,10 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Brand whereNameAr($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Brand whereNameEn($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Brand whereUpdatedAt($value)
+ * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CarModel> $carModels
+ * @property-read int|null $car_models_count
+ * @property-read string $name
  */
 	class Brand extends \Eloquent {}
 }
@@ -51,6 +55,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CarModel whereNameEn($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CarModel whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CarModel whereYearRange($value)
+ * @mixin \Eloquent
  */
 	class CarModel extends \Eloquent {}
 }
@@ -81,6 +86,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Category whereNameEn($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Category whereParentId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Category whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 	class Category extends \Eloquent {}
 }
@@ -111,6 +117,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Client whereNameEn($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Client whereNotes($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Client whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 	class Client extends \Eloquent {}
 }
@@ -141,6 +148,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|ClientVehicle whereNotes($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|ClientVehicle wherePlateNumber($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|ClientVehicle whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 	class ClientVehicle extends \Eloquent {}
 }
@@ -165,6 +173,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Labour whereNameAr($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Labour whereNameEn($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Labour whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 	class Labour extends \Eloquent {}
 }
@@ -201,6 +210,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Product whereNotes($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Product whereSellPrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Product whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 	class Product extends \Eloquent {}
 }
@@ -268,6 +278,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Warehouse whereNameEn($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Warehouse wherePhone($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Warehouse whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 	class Warehouse extends \Eloquent {}
 }

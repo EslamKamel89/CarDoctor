@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property int $id
@@ -20,6 +21,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Brand whereNameAr($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Brand whereNameEn($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Brand whereUpdatedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CarModel> $carModels
+ * @property-read int|null $car_models_count
+ * @property-read string $name
  * @mixin \Eloquent
  */
 class Brand extends Model {
@@ -29,4 +33,10 @@ class Brand extends Model {
         'name_ar',
         'name_en',
     ];
+    public function carModels(): HasMany {
+        return $this->hasMany(CarModel::class);
+    }
+    public function getNameAttribute(): string {
+        return app()->isLocale('ar') ? $this->name_ar : $this->name_en;
+    }
 }
