@@ -32,6 +32,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Category whereNameEn($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Category whereParentId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Category whereUpdatedAt($value)
+ * @property-read Category|null $parent
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
+ * @property-read int|null $products_count
  * @mixin \Eloquent
  */
 class Category extends Model {
@@ -44,13 +47,19 @@ class Category extends Model {
         'description_ar',
         'description_en',
     ];
+    public function getNameAttribute() {
+        return app()->isLocale('ar') ? $this->name_ar : $this->name_en;
+    }
     public function children(): HasMany {
         return $this->hasMany(Category::class, 'parent_id');
     }
-    public function parents(): BelongsTo {
+    public function parent(): BelongsTo {
         return $this->belongsTo(Category::class, 'parent_id');
     }
     public function getIsLeafAttribute(): bool {
         return $this->children()->doesntExist();
+    }
+    public function products(): HasMany {
+        return $this->hasMany(Product::class);
     }
 }

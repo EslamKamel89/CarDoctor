@@ -27,6 +27,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CarModel whereNameEn($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CarModel whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CarModel whereYearRange($value)
+ * @property-read \App\Models\Brand $brand
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ClientVehicle> $clientVehicles
+ * @property-read int|null $client_vehicles_count
+ * @property-read string $name
+ * @property-read string $year_range_formatted
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
+ * @property-read int|null $products_count
  * @mixin \Eloquent
  */
 class CarModel extends Model {

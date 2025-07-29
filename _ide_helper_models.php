@@ -55,7 +55,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CarModel whereNameEn($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CarModel whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CarModel whereYearRange($value)
- * @mixin \Eloquent
  * @property-read \App\Models\Brand $brand
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ClientVehicle> $clientVehicles
  * @property-read int|null $client_vehicles_count
@@ -63,6 +62,7 @@ namespace App\Models{
  * @property-read string $year_range_formatted
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
  * @property-read int|null $products_count
+ * @mixin \Eloquent
  */
 	class CarModel extends \Eloquent {}
 }
@@ -93,7 +93,11 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Category whereNameEn($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Category whereParentId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Category whereUpdatedAt($value)
+ * @property-read Category|null $parent
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
+ * @property-read int|null $products_count
  * @mixin \Eloquent
+ * @property-read mixed $name
  */
 	class Category extends \Eloquent {}
 }
