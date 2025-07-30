@@ -13,6 +13,16 @@
 
 namespace App\Models{
 /**
+ * @method static \Database\Factories\AuditLogFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog query()
+ */
+	class AuditLog extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * @property int $id
  * @property string $name_ar
  * @property string $name_en
@@ -168,6 +178,46 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * @method static \Database\Factories\CreditNoteFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote query()
+ */
+	class CreditNote extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @method static \Database\Factories\CreditNoteItemFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem query()
+ */
+	class CreditNoteItem extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @method static \Database\Factories\InvoiceFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice query()
+ */
+	class Invoice extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @method static \Database\Factories\InvoiceItemFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|InvoiceItem newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|InvoiceItem newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|InvoiceItem query()
+ */
+	class InvoiceItem extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * @property int $id
  * @property string|null $name_ar
  * @property string|null $name_en
@@ -226,6 +276,16 @@ namespace App\Models{
  * @mixin \Eloquent
  */
 	class Product extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @method static \Database\Factories\StockLogFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog query()
+ */
+	class StockLog extends \Eloquent {}
 }
 
 namespace App\Models{
