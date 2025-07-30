@@ -31,6 +31,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Client whereNameEn($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Client whereNotes($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Client whereUpdatedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ClientVehicle> $vehicles
+ * @property-read int|null $vehicles_count
  * @mixin \Eloquent
  */
 class Client extends Model {
