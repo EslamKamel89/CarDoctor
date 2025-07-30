@@ -96,8 +96,8 @@ namespace App\Models{
  * @property-read Category|null $parent
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
  * @property-read int|null $products_count
- * @mixin \Eloquent
  * @property-read mixed $name
+ * @mixin \Eloquent
  */
 	class Category extends \Eloquent {}
 }
@@ -129,6 +129,8 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Client whereNotes($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Client whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ClientVehicle> $vehicles
+ * @property-read int|null $vehicles_count
  */
 	class Client extends \Eloquent {}
 }
@@ -289,11 +291,11 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Warehouse whereNameEn($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Warehouse wherePhone($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Warehouse whereUpdatedAt($value)
- * @mixin \Eloquent
  * @property-read string $location
  * @property-read string $name
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
  * @property-read int|null $products_count
+ * @mixin \Eloquent
  */
 	class Warehouse extends \Eloquent {}
 }

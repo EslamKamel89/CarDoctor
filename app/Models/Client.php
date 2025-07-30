@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property int $id
@@ -44,4 +45,10 @@ class Client extends Model {
         'address_en',
         'notes',
     ];
+    public function vehicles(): HasMany {
+        return $this->hasMany(ClientVehicle::class, 'client_id');
+    }
+    // public function invoices(): HasMany {
+    //     return $this->hasMany(Invoice::class);
+    // }
 }
