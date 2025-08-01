@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * @property int $id
@@ -109,5 +110,8 @@ class Invoice extends Model {
     }
     public function getIsPartiallyPaidAttribute(): bool {
         return $this->status === 'debt' && $this->actual_paid_amount > 0;
+    }
+    public function debt(): HasOne {
+        return $this->hasOne(Dept::class);
     }
 }

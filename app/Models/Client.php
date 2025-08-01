@@ -62,4 +62,12 @@ class Client extends Model {
     public function getAddressAttribute() {
         return app()->isLocale('ar') ? $this->address_ar : $this->address_en;
     }
+
+    public function debts(): HasMany {
+        return $this->hasMany(Debt::class);
+    }
+
+    public function getOpenDebtsAmountAttribute(): float {
+        return $this->debts()->where('is_settled', false)->sum('remaining_amount');
+    }
 }

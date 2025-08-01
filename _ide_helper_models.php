@@ -170,8 +170,11 @@ namespace App\Models{
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CreditNote> $creditNotes
  * @property-read int|null $credit_notes_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Debt> $debts
+ * @property-read int|null $debts_count
  * @property-read mixed $address
  * @property-read mixed $name
+ * @property-read float $open_debts_amount
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Invoice> $invoices
  * @property-read int|null $invoices_count
  */
@@ -270,6 +273,18 @@ namespace App\Models{
  * @mixin \Eloquent
  */
 	class CreditNoteItem extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @property-read \App\Models\Client|null $client
+ * @property-read \App\Models\Invoice|null $invoice
+ * @method static \Database\Factories\DebtFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt query()
+ */
+	class Debt extends \Eloquent {}
 }
 
 namespace App\Models{
