@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property int $id
@@ -53,4 +56,41 @@ class Product extends Model {
         'min_stock_quantity',
         'notes',
     ];
+    protected $casts = [
+        'buy_price' => 'decimal:2',
+        'sell_price' => 'decimal:2',
+        'min_stock_quantity' => 'integer',
+    ];
+    public function category(): BelongsTo {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function warehouses(): BelongsToMany {
+        return $this->belongsToMany(Warehouse::class, 'product_warehouse')
+            ->withPivot('stock_quantity')
+            ->withTimestamps();
+    }
+
+    public function applicableModels(): BelongsToMany {
+        return $this->belongsToMany(
+            CarModel::class,
+            'product_applicability',
+            'product_id',
+            'car_model_id'
+        )->withPivot('notes')->withTimestamps();
+    }
+
+    public function invoiceItems(): HasMany {
+        return $this->hasMany(InvoiceItem::class);
+    }
+
+    public function getNameAttribute() {
+        return app()->isLocale('ar') ? $this->name_ar : $this->name_en;
+    }
+
+    public function getStockInWarehouse($warehouseId) {
+        return $this->warehouses()
+            ->where('warehouse_id', $warehouseId)
+            ->first()?->pivot->stock_quantity ?? 0;
+    }
 }
