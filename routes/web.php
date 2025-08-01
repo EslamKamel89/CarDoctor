@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\BrandController;
 use App\Http\Controllers\Dashboard\RoleController;
 use App\Http\Controllers\Dashboard\UserController;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,8 @@ Route::middleware('auth')->group(function () {
         ->only(['edit', 'update'])->middleware('permission:roles.update');
     Route::resource('/roles', RoleController::class)
         ->only(['delete'])->middleware('permission:roles.delete');
+
+    Route::resource('brands', BrandController::class);
 });
 
 
