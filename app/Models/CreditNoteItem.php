@@ -25,6 +25,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem whereQuantity($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem whereRefundedAmount($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem whereUpdatedAt($value)
+ * @property-read \App\Models\CreditNote $creditNote
+ * @property-read mixed $product_name
+ * @property-read \App\Models\InvoiceItem $invoiceItem
  * @mixin \Eloquent
  */
 class CreditNoteItem extends Model {

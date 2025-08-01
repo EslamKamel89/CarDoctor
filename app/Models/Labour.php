@@ -24,6 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Labour whereNameAr($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Labour whereNameEn($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Labour whereUpdatedAt($value)
+ * @property-read mixed $name
  * @mixin \Eloquent
  */
 class Labour extends Model {

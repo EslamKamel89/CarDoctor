@@ -39,6 +39,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Product whereNotes($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Product whereSellPrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Product whereUpdatedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CarModel> $applicableModels
+ * @property-read int|null $applicable_models_count
+ * @property-read \App\Models\Category|null $category
+ * @property-read mixed $name
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\InvoiceItem> $invoiceItems
+ * @property-read int|null $invoice_items_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Warehouse> $warehouses
+ * @property-read int|null $warehouses_count
  * @mixin \Eloquent
  */
 class Product extends Model {

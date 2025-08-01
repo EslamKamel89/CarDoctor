@@ -37,6 +37,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog whereWarehouseId($value)
+ * @property-read mixed $change_label
+ * @property-read \App\Models\Product $product
+ * @property-read \App\Models\User $user
+ * @property-read \App\Models\Warehouse $warehouse
  * @mixin \Eloquent
  */
 class StockLog extends Model {

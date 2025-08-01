@@ -33,6 +33,15 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Client whereUpdatedAt($value)
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ClientVehicle> $vehicles
  * @property-read int|null $vehicles_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CreditNote> $creditNotes
+ * @property-read int|null $credit_notes_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Debt> $debts
+ * @property-read int|null $debts_count
+ * @property-read mixed $address
+ * @property-read mixed $name
+ * @property-read float $open_debts_amount
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Invoice> $invoices
+ * @property-read int|null $invoices_count
  * @mixin \Eloquent
  */
 class Client extends Model {

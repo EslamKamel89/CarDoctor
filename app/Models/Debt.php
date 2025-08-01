@@ -6,6 +6,37 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * @property int $id
+ * @property int $invoice_id
+ * @property int $client_id
+ * @property numeric $original_amount
+ * @property numeric $paid_amount
+ * @property numeric $remaining_amount
+ * @property \Illuminate\Support\Carbon|null $due_date
+ * @property string|null $notes
+ * @property bool $is_settled
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Client $client
+ * @property-read \App\Models\Invoice $invoice
+ * @method static \Database\Factories\DebtFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt whereClientId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt whereDueDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt whereInvoiceId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt whereIsSettled($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt whereNotes($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt whereOriginalAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt wherePaidAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt whereRemainingAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Debt extends Model {
     /** @use HasFactory<\Database\Factories\DebtFactory> */
     use HasFactory;

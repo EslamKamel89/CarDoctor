@@ -37,6 +37,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog whereUserAgent($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog whereUserId($value)
+ * @property-read mixed $action_label
+ * @property-read \App\Models\User $user
  * @mixin \Eloquent
  */
 class AuditLog extends Model {

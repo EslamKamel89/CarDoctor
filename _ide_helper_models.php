@@ -43,9 +43,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog whereUserAgent($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog whereUserId($value)
- * @mixin \Eloquent
  * @property-read mixed $action_label
  * @property-read \App\Models\User $user
+ * @mixin \Eloquent
  */
 	class AuditLog extends \Eloquent {}
 }
@@ -169,7 +169,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Client whereUpdatedAt($value)
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ClientVehicle> $vehicles
  * @property-read int|null $vehicles_count
- * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CreditNote> $creditNotes
  * @property-read int|null $credit_notes_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Debt> $debts
@@ -179,6 +178,7 @@ namespace App\Models{
  * @property-read float $open_debts_amount
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Invoice> $invoices
  * @property-read int|null $invoices_count
+ * @mixin \Eloquent
  */
 	class Client extends \Eloquent {}
 }
@@ -209,12 +209,12 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|ClientVehicle whereNotes($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|ClientVehicle wherePlateNumber($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|ClientVehicle whereUpdatedAt($value)
- * @mixin \Eloquent
  * @property-read \App\Models\CarModel $carModel
  * @property-read \App\Models\Client $client
  * @property-read string $display_name
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Invoice> $invoices
  * @property-read int|null $invoices_count
+ * @mixin \Eloquent
  */
 	class ClientVehicle extends \Eloquent {}
 }
@@ -247,12 +247,12 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote whereReasonEn($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote whereTotalRefundAmount($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote whereUpdatedAt($value)
- * @mixin \Eloquent
  * @property-read \App\Models\Client|null $client
  * @property-read mixed $reason
  * @property-read \App\Models\Invoice $invoice
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CreditNoteItem> $items
  * @property-read int|null $items_count
+ * @mixin \Eloquent
  */
 	class CreditNote extends \Eloquent {}
 }
@@ -277,10 +277,10 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem whereQuantity($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem whereRefundedAmount($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem whereUpdatedAt($value)
- * @mixin \Eloquent
  * @property-read \App\Models\CreditNote $creditNote
  * @property-read mixed $product_name
  * @property-read \App\Models\InvoiceItem $invoiceItem
+ * @mixin \Eloquent
  */
 	class CreditNoteItem extends \Eloquent {}
 }
@@ -315,6 +315,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt wherePaidAmount($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt whereRemainingAmount($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 	class Debt extends \Eloquent {}
 }
@@ -353,7 +354,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice whereUserId($value)
- * @mixin \Eloquent
  * @property numeric $actual_total
  * @property-read \App\Models\Client|null $client
  * @property-read \App\Models\ClientVehicle|null $clientVehicle
@@ -369,6 +369,8 @@ namespace App\Models{
  * @property-read int|null $items_count
  * @property-read \App\Models\User|null $user
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice whereActualTotal($value)
+ * @mixin \Eloquent
+ * @property-read \App\Models\Debt|null $debt
  */
 	class Invoice extends \Eloquent {}
 }
@@ -395,9 +397,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|InvoiceItem whereTotalPrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|InvoiceItem whereUnitPrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|InvoiceItem whereUpdatedAt($value)
- * @mixin \Eloquent
  * @property-read \App\Models\Invoice $invoice
  * @property-read \App\Models\Product $product
+ * @mixin \Eloquent
  */
 	class InvoiceItem extends \Eloquent {}
 }
@@ -422,8 +424,8 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Labour whereNameAr($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Labour whereNameEn($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Labour whereUpdatedAt($value)
- * @mixin \Eloquent
  * @property-read mixed $name
+ * @mixin \Eloquent
  */
 	class Labour extends \Eloquent {}
 }
@@ -460,7 +462,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Product whereNotes($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Product whereSellPrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Product whereUpdatedAt($value)
- * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CarModel> $applicableModels
  * @property-read int|null $applicable_models_count
  * @property-read \App\Models\Category|null $category
@@ -469,6 +470,7 @@ namespace App\Models{
  * @property-read int|null $invoice_items_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Warehouse> $warehouses
  * @property-read int|null $warehouses_count
+ * @mixin \Eloquent
  */
 	class Product extends \Eloquent {}
 }
@@ -505,11 +507,11 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog whereWarehouseId($value)
- * @mixin \Eloquent
  * @property-read mixed $change_label
  * @property-read \App\Models\Product $product
  * @property-read \App\Models\User $user
  * @property-read \App\Models\Warehouse $warehouse
+ * @mixin \Eloquent
  */
 	class StockLog extends \Eloquent {}
 }
