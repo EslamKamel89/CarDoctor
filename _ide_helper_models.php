@@ -13,10 +13,37 @@
 
 namespace App\Models{
 /**
+ * @property int $id
+ * @property int $user_id
+ * @property string $action
+ * @property string $subject_type
+ * @property int|null $subject_id
+ * @property string $description_ar
+ * @property string $description_en
+ * @property string|null $old_values
+ * @property string|null $new_values
+ * @property string|null $ip_address
+ * @property string|null $user_agent
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Database\Factories\AuditLogFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog whereAction($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog whereDescriptionAr($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog whereDescriptionEn($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog whereIpAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog whereNewValues($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog whereOldValues($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog whereSubjectId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog whereSubjectType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog whereUserAgent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog whereUserId($value)
+ * @mixin \Eloquent
  */
 	class AuditLog extends \Eloquent {}
 }
@@ -138,9 +165,15 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Client whereNameEn($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Client whereNotes($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Client whereUpdatedAt($value)
- * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ClientVehicle> $vehicles
  * @property-read int|null $vehicles_count
+ * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CreditNote> $creditNotes
+ * @property-read int|null $credit_notes_count
+ * @property-read mixed $address
+ * @property-read mixed $name
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Invoice> $invoices
+ * @property-read int|null $invoices_count
  */
 	class Client extends \Eloquent {}
 }
@@ -178,40 +211,124 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * @property int $id
+ * @property int $invoice_id
+ * @property int|null $client_id
+ * @property string $credit_note_number
+ * @property string $issue_date
+ * @property string $reason_ar
+ * @property string $reason_en
+ * @property string $total_refund_amount
+ * @property string $payment_refund_method
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Database\Factories\CreditNoteFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote whereClientId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote whereCreditNoteNumber($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote whereInvoiceId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote whereIssueDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote wherePaymentRefundMethod($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote whereReasonAr($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote whereReasonEn($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote whereTotalRefundAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 	class CreditNote extends \Eloquent {}
 }
 
 namespace App\Models{
 /**
+ * @property int $id
+ * @property int $credit_note_id
+ * @property int $invoice_item_id
+ * @property int $quantity
+ * @property string $refunded_amount
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Database\Factories\CreditNoteItemFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem whereCreditNoteId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem whereInvoiceItemId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem whereQuantity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem whereRefundedAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 	class CreditNoteItem extends \Eloquent {}
 }
 
 namespace App\Models{
 /**
+ * @property int $id
+ * @property int|null $client_id
+ * @property int|null $client_vehicle_id
+ * @property int|null $user_id
+ * @property string $invoice_number
+ * @property string $date
+ * @property string $status
+ * @property string $calculated_total
+ * @property string $actual_paid_amount
+ * @property string $payment_method
+ * @property string|null $labor_info
+ * @property string|null $notes
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Database\Factories\InvoiceFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice whereActualPaidAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice whereCalculatedTotal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice whereClientId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice whereClientVehicleId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice whereDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice whereInvoiceNumber($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice whereLaborInfo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice whereNotes($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice wherePaymentMethod($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice whereUserId($value)
+ * @mixin \Eloquent
  */
 	class Invoice extends \Eloquent {}
 }
 
 namespace App\Models{
 /**
+ * @property int $id
+ * @property int $invoice_id
+ * @property int $product_id
+ * @property int $quantity
+ * @property string $unit_price
+ * @property string $total_price
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Database\Factories\InvoiceItemFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|InvoiceItem newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|InvoiceItem newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|InvoiceItem query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|InvoiceItem whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|InvoiceItem whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|InvoiceItem whereInvoiceId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|InvoiceItem whereProductId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|InvoiceItem whereQuantity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|InvoiceItem whereTotalPrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|InvoiceItem whereUnitPrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|InvoiceItem whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 	class InvoiceItem extends \Eloquent {}
 }
@@ -280,10 +397,37 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * @property int $id
+ * @property int $product_id
+ * @property int $warehouse_id
+ * @property int $user_id
+ * @property string $change_type
+ * @property int $quantity_change
+ * @property int $previous_stock
+ * @property int $current_stock
+ * @property string $reference_type
+ * @property int $reference_id
+ * @property string|null $notes
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Database\Factories\StockLogFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog whereChangeType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog whereCurrentStock($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog whereNotes($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog wherePreviousStock($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog whereProductId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog whereQuantityChange($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog whereReferenceId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog whereReferenceType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog whereWarehouseId($value)
+ * @mixin \Eloquent
  */
 	class StockLog extends \Eloquent {}
 }

@@ -50,7 +50,16 @@ class Client extends Model {
     public function vehicles(): HasMany {
         return $this->hasMany(ClientVehicle::class, 'client_id');
     }
-    // public function invoices(): HasMany {
-    //     return $this->hasMany(Invoice::class);
-    // }
+    public function invoices(): HasMany {
+        return $this->hasMany(Invoice::class);
+    }
+    public function creditNotes(): HasMany {
+        return $this->hasMany(CreditNote::class, 'client_id');
+    }
+    public function getNameAttribute() {
+        return app()->isLocale('ar') ? $this->name_ar : $this->name_en;
+    }
+    public function getAddressAttribute() {
+        return app()->isLocale('ar') ? $this->address_ar : $this->address_en;
+    }
 }

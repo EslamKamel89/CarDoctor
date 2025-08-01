@@ -1,0 +1,250 @@
+// CarDoctor Automotive Management System
+// ERD for dbdiagram.io
+// Version: 1.0
+
+Table brands {
+  id int [pk, increment]
+  name_ar string
+  name_en string
+  created_at datetime
+  updated_at datetime
+}
+
+Table car_models {
+  id int [pk, increment]
+  brand_id int [ref: > brands.id]
+  name_ar string
+  name_en string
+  year_range json
+  created_at datetime
+  updated_at datetime
+  indexes {
+    (brand_id)
+  }
+}
+
+Table categories {
+  id int [pk, increment]
+  parent_id int [ref: > categories.id, null]
+  name_ar string
+  name_en string
+  description_ar text [null]
+  description_en text [null]
+  created_at datetime
+  updated_at datetime
+  indexes {
+    (parent_id)
+  }
+}
+
+Table warehouses {
+  id int [pk, increment]
+  name_ar string
+  name_en string
+  location_ar text [null]
+  location_en text [null]
+  contact_person string [null]
+  phone string [null]
+  is_active boolean [default: true]
+  created_at datetime
+  updated_at datetime
+}
+
+Table clients {
+  id int [pk, increment]
+  name_ar string
+  name_en string
+  mobile string [unique]
+  email string [null, unique]
+  address_ar text [null]
+  address_en text [null]
+  notes text [null]
+  created_at datetime
+  updated_at datetime
+  indexes {
+    (mobile)
+  }
+}
+
+Table client_vehicles {
+  id int [pk, increment]
+  client_id int [ref: > clients.id]
+  car_model_id int [ref: > car_models.id]
+  plate_number string
+  chassis_number string [null]
+  color string [null]
+  manufacturing_year int [null]
+  notes text [null]
+  created_at datetime
+  updated_at datetime
+  indexes {
+    (client_id)
+    (plate_number)
+  }
+}
+
+Table products {
+  id int [pk, increment]
+  category_id int [ref: > categories.id]
+  code string [unique, note: 'Unique product code, used for barcode']
+  name_ar string
+  name_en string
+  description_ar text [null]
+  description_en text [null]
+  buy_price decimal(10,2)
+  sell_price decimal(10,2)
+  min_stock_quantity int [default: 0]
+  has_barcode boolean [default: true]
+  notes text [null]
+  created_at datetime
+  updated_at datetime
+  indexes {
+    (code)
+    (category_id)
+  }
+}
+
+// Pivot: Product <-> Warehouse (stock per location)
+Table product_warehouse {
+  id int [pk, increment]
+  product_id int [ref: > products.id]
+  warehouse_id int [ref: > warehouses.id]
+  stock_quantity int [default: 0]
+  created_at datetime
+  updated_at datetime
+  indexes {
+    (product_id, warehouse_id) [unique]
+  }
+}
+
+// Pivot: Product <-> Car Model (applicability)
+Table product_applicability {
+  id int [pk, increment]
+  product_id int [ref: > products.id]
+  car_model_id int [ref: > car_models.id]
+  notes text [null]
+  created_at datetime
+  updated_at datetime
+  indexes {
+    (product_id, car_model_id) [unique]
+  }
+}
+
+Table labours {
+  id int [pk, increment]
+  name_ar string
+  name_en string
+  base_fee decimal(10,2)
+  is_active boolean [default: true]
+  created_at datetime
+  updated_at datetime
+}
+
+// Invoices Core
+Table invoices {
+  id int [pk, increment]
+  client_id int [ref: > clients.id]
+  client_vehicle_id int [ref: > client_vehicles.id, null]
+  invoice_number string [unique, note: 'INV-YYYYMMDDHHMMSS-RANDOM']
+  user_id int [ref: > users.id, note: 'Creator of the invoice']
+  date date
+  status string [default: "unpaid", note: 'draft, unpaid, paid']
+  calculated_total decimal(10,2)
+  actual_paid_amount decimal(10,2)
+  payment_method string [default: "cash", note: 'cash, card, bank_transfer']
+  labor_info json [note: 'Array of {name_ar, name_en, fee}']
+  notes text [null]
+  created_at datetime
+  updated_at datetime
+  indexes {
+    (invoice_number)
+    (client_id)
+    (user_id)
+    (status)
+  }
+}
+
+Table invoice_items {
+  id int [pk, increment]
+  invoice_id int [ref: > invoices.id]
+  product_id int [ref: > products.id]
+  quantity int [default: 1]
+  unit_price decimal(10,2) [note: 'Snapshot at time of sale']
+  total_price decimal(10,2) [note: 'quantity × unit_price']
+  created_at datetime
+  updated_at datetime
+  indexes {
+    (invoice_id)
+  }
+}
+
+// Credit Notes (Returns)
+Table credit_notes {
+  id int [pk, increment]
+  invoice_id int [ref: > invoices.id, note: 'Original invoice being refunded']
+  client_id int [ref: > clients.id]
+  credit_note_number string [unique, note: 'CR-YYYYMMDDHHMMSS-RANDOM']
+  issue_date date
+  reason_ar text
+  reason_en text
+  total_refund_amount decimal(10,2)
+  payment_refund_method string [default: "cash", note: 'cash, card, no-refund']
+  created_at datetime
+  updated_at datetime
+  indexes {
+    (credit_note_number)
+  }
+}
+
+Table credit_note_items {
+  id int [pk, increment]
+  credit_note_id int [ref: > credit_notes.id]
+  invoice_item_id int [ref: > invoice_items.id]
+  quantity int
+  refunded_amount decimal(10,2)
+  created_at datetime
+  updated_at datetime
+}
+
+// Stock & Audit Logs
+Table stock_logs {
+  id int [pk, increment]
+  product_id int [ref: > products.id]
+  warehouse_id int [ref: > warehouses.id]
+  user_id int [ref: > users.id]
+  change_type string [note: 'sale, return, adjustment']
+  quantity_change int [note: 'e.g., -2 or +3']
+  previous_stock int
+  current_stock int
+  reference_type string [note: 'Invoice, CreditNote, ManualAdjustment']
+  reference_id int
+  notes text [null]
+  created_at datetime
+}
+
+Table audit_logs {
+  id int [pk, increment]
+  user_id int [ref: > users.id]
+  action string [note: 'invoice_created, status_changed']
+  subject_type string [note: 'Invoice, Product']
+  subject_id int [null]
+  description_ar text
+  description_en text
+  old_values json [null]
+  new_values json [null]
+  ip_address string [null]
+  user_agent text [null]
+  created_at datetime
+}
+
+// Users (Assuming Laravel default users table)
+Table users {
+  id int [pk, increment]
+  name string
+  email string [unique]
+  email_verified_at datetime [null]
+  password string
+  remember_token string [null]
+  created_at datetime
+  updated_at datetime
+}
