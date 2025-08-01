@@ -359,6 +359,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Labour whereNameEn($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Labour whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read mixed $name
  */
 	class Labour extends \Eloquent {}
 }

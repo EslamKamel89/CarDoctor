@@ -38,6 +38,10 @@ class Labour extends Model {
     protected function casts(): array {
         return [
             'is_active' => 'boolean',
+            'base_fee' => 'decimal:2',
         ];
+    }
+    public function getNameAttribute() {
+        return app()->isLocale('ar') ? $this->name_ar : $this->name_en;
     }
 }
