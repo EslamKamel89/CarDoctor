@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property int $id
@@ -56,4 +58,56 @@ class Invoice extends Model {
         'labor_info',
         'notes',
     ];
+    protected $casts = [
+        'date' => 'date',
+        'calculated_total' => 'decimal:2',
+        'actual_total' => 'decimal:2',
+        'actual_paid_amount' => 'decimal:2',
+        'labor_info' => 'array',
+    ];
+    public function client(): BelongsTo {
+        return $this->belongsTo(Client::class);
+    }
+
+    public function clientVehicle(): BelongsTo {
+        return $this->belongsTo(ClientVehicle::class);
+    }
+
+    public function user(): BelongsTo {
+        return $this->belongsTo(User::class);
+    }
+
+    public function items(): HasMany {
+        return $this->hasMany(InvoiceItem::class);
+    }
+
+    public function creditNotes(): HasMany {
+        return $this->hasMany(CreditNote::class);
+    }
+    public function getIsDebtAttribute(): bool {
+        return $this->status === 'debt';
+    }
+    public function getIsPaidAttribute(): bool {
+        return $this->status === 'paid';
+    }
+
+    public function getIsDraftAttribute(): bool {
+        return $this->status === 'draft';
+    }
+
+    public function getRemainingAmountAttribute(): float {
+        return $this->actual_total - $this->actual_paid_amount;
+    }
+
+    public function getFormattedLaborInfoAttribute(): array {
+        return collect($this->labor_info ?? [])->map(function ($item) {
+            return [
+                'name' => app()->isLocale('ar') ? $item['name_ar'] : $item['name_en'],
+                'fee' => $item['fee'],
+            ];
+        })->all();
+    }
+    public function getIsPartiallyPaidAttribute(): bool {
+        return $this->status === 'debt' && $this->actual_paid_amount > 0;
+    }
 }

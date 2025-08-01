@@ -307,6 +307,19 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice whereUserId($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\Client|null $client
+ * @property-read \App\Models\ClientVehicle|null $clientVehicle
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CreditNote> $creditNotes
+ * @property-read int|null $credit_notes_count
+ * @property-read array $formatted_labor_info
+ * @property-read bool $is_debt
+ * @property-read bool $is_draft
+ * @property-read bool $is_paid
+ * @property-read bool $is_partially_paid
+ * @property-read float $remaining_amount
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\InvoiceItem> $items
+ * @property-read int|null $items_count
+ * @property-read \App\Models\User|null $user
  */
 	class Invoice extends \Eloquent {}
 }

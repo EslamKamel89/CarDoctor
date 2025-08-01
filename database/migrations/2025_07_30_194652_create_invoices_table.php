@@ -16,8 +16,9 @@ return new class extends Migration {
             $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
             $table->string('invoice_number')->unique();
             $table->date('date');
-            $table->enum('status', ['darft', 'unpaid', 'paid'])->default('unpaid');
+            $table->enum('status', ['draft', 'unpaid', 'paid', 'debt'])->default('unpaid');
             $table->decimal('calculated_total', 15, 2);
+            $table->decimal('actual_total', 15, 2);
             $table->decimal('actual_paid_amount', 15, 2);
             $table->enum('payment_method', ['cash', 'card', 'bank_transfer'])->default('cash');
             $table->json('labor_info')->nullable();
