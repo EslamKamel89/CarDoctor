@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @property int $id
@@ -53,4 +54,21 @@ class AuditLog extends Model {
         'ip_address',
         'user_agent',
     ];
+    protected $casts = [
+        'old_values' => 'array',
+        'new_values' => 'array',
+    ];
+
+    public function user(): BelongsTo {
+        return $this->belongsTo(User::class);
+    }
+    public function getActionLabelAttribute() {
+        $labels = [
+            'invoice_created' => ['ar' => 'تم إنشاء فاتورة', 'en' => 'Invoice Created'],
+            'invoice_status_changed' => ['ar' => 'تغيرت حالة الفاتورة', 'en' => 'Invoice Status Changed'],
+            'product_updated' => ['ar' => 'تم تعديل منتج', 'en' => 'Product Updated'],
+        ];
+
+        return $labels[$this->action][app()->isLocale('ar') ? 'ar' : 'en'] ?? $this->action;
+    }
 }

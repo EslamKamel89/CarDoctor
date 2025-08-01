@@ -44,6 +44,8 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog whereUserAgent($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog whereUserId($value)
  * @mixin \Eloquent
+ * @property-read mixed $action_label
+ * @property-read \App\Models\User $user
  */
 	class AuditLog extends \Eloquent {}
 }
