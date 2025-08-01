@@ -246,6 +246,11 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote whereTotalRefundAmount($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\Client|null $client
+ * @property-read mixed $reason
+ * @property-read \App\Models\Invoice $invoice
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CreditNoteItem> $items
+ * @property-read int|null $items_count
  */
 	class CreditNote extends \Eloquent {}
 }

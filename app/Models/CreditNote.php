@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property int $id
@@ -47,4 +49,23 @@ class CreditNote extends Model {
         'total_refund_amount',
         'payment_refund_method',
     ];
+    protected $casts = [
+        'issue_date' => 'date',
+        'total_refund_amount' => 'decimal:2',
+    ];
+    public function invoice(): BelongsTo {
+        return $this->belongsTo(Invoice::class);
+    }
+
+    public function client(): BelongsTo {
+        return $this->belongsTo(Client::class);
+    }
+
+    public function items(): HasMany {
+        return $this->hasMany(CreditNoteItem::class);
+    }
+
+    public function getReasonAttribute() {
+        return app()->isLocale('ar') ? $this->reason_ar : $this->reason_en;
+    }
 }
