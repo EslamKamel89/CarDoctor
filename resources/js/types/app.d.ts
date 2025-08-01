@@ -14,3 +14,12 @@ export interface Permission {
     created_at: string;
     updated_at: string;
 }
+
+export interface Brand {
+    id: number;
+    name: string;
+    name_ar: string;
+    name_en: string;
+    created_at: string;
+    updated_at: string;
+}
