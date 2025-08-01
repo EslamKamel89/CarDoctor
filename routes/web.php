@@ -20,7 +20,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('/roles', RoleController::class);
     Route::resource('brands', BrandController::class);
 });
-
+// Route::get('/test/{id}', function () {
+//     dd(request()->route('id'));
+// });
 
 
 
