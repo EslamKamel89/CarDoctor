@@ -6,7 +6,7 @@ import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, Sid
 import { can } from '@/helpers/can';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/vue3';
-import { Car, KeyRound, LayoutGrid, Users } from 'lucide-vue-next';
+import { Car, Gauge, KeyRound, LayoutGrid, Users } from 'lucide-vue-next';
 import { onMounted, ref } from 'vue';
 import AppLogo from './AppLogo.vue';
 
@@ -52,6 +52,13 @@ onMounted(() => {
             title: 'العلامات التجارية',
             href: '/brands',
             icon: Car,
+        });
+    }
+    if (can('car_models.view')) {
+        mainNavItems.value.push({
+            title: 'جدول موديلات السيارات',
+            href: '/car-models',
+            icon: Gauge,
         });
     }
 });

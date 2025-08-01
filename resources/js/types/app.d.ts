@@ -23,3 +23,13 @@ export interface Brand {
     created_at: string;
     updated_at: string;
 }
+export interface CarModel {
+    id: number;
+    name: string;
+    name_ar: string;
+    name_en: string;
+    year_range: number[];
+    year_range_formatted: string;
+    brand: Brand;
+    created_at: string;
+}
