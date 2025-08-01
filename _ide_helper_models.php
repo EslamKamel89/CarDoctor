@@ -205,6 +205,11 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|ClientVehicle wherePlateNumber($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|ClientVehicle whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\CarModel $carModel
+ * @property-read \App\Models\Client $client
+ * @property-read string $display_name
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Invoice> $invoices
+ * @property-read int|null $invoices_count
  */
 	class ClientVehicle extends \Eloquent {}
 }

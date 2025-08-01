@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property int $id
@@ -44,4 +46,19 @@ class ClientVehicle extends Model {
         'manufacturing_year',
         'notes',
     ];
+    public function client(): BelongsTo {
+        return $this->belongsTo(Client::class);
+    }
+
+    public function carModel(): BelongsTo {
+        return $this->belongsTo(CarModel::class);
+    }
+
+    public function invoices(): HasMany {
+        return $this->hasMany(Invoice::class);
+    }
+
+    public function getDisplayNameAttribute(): string {
+        return $this->carModel?->name . ' (' . $this->plate_number . ')';
+    }
 }
