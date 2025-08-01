@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @property int $id
@@ -35,4 +36,22 @@ class CreditNoteItem extends Model {
         'quantity',
         'refunded_amount',
     ];
+    protected $casts = [
+        'quantity' => 'integer',
+        'refunded_amount' => 'decimal:2',
+    ];
+
+    public function creditNote(): BelongsTo {
+        return $this->belongsTo(CreditNote::class);
+    }
+
+    public function invoiceItem(): BelongsTo {
+        return $this->belongsTo(InvoiceItem::class);
+    }
+
+    public function getProductNameAttribute() {
+        return app()->isLocale('ar')
+            ? $this->invoiceItem->product->name_ar
+            : $this->invoiceItem->product->name_en;
+    }
 }

@@ -276,6 +276,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem whereRefundedAmount($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\CreditNote $creditNote
+ * @property-read mixed $product_name
+ * @property-read \App\Models\InvoiceItem $invoiceItem
  */
 	class CreditNoteItem extends \Eloquent {}
 }
