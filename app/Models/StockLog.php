@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @property int $id
@@ -53,4 +54,25 @@ class StockLog extends Model {
         'reference_id',
         'notes',
     ];
+    public function product(): BelongsTo {
+        return $this->belongsTo(Product::class);
+    }
+
+    public function warehouse(): BelongsTo {
+        return $this->belongsTo(Warehouse::class);
+    }
+
+    public function user(): BelongsTo {
+        return $this->belongsTo(User::class);
+    }
+
+    public function getChangeLabelAttribute() {
+        $labels = [
+            'sale' => ['ar' => 'بيع', 'en' => 'Sale'],
+            'return' => ['ar' => 'إرجاع', 'en' => 'Return'],
+            'adjustment' => ['ar' => 'تعديل يدوي', 'en' => 'Manual Adjustment'],
+        ];
+
+        return app()->isLocale('ar') ? $labels[$this->change_type]['ar'] : $labels[$this->change_type]['en'];
+    }
 }

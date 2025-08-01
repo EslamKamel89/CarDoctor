@@ -504,6 +504,10 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog whereWarehouseId($value)
  * @mixin \Eloquent
+ * @property-read mixed $change_label
+ * @property-read \App\Models\Product $product
+ * @property-read \App\Models\User $user
+ * @property-read \App\Models\Warehouse $warehouse
  */
 	class StockLog extends \Eloquent {}
 }
