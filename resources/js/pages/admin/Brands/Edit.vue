@@ -17,7 +17,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 </script>
 <template>
-    <Head title="إنشاء علامة تجارية" />
+    <Head title="تحديث علامة تجارية" />
     <AppLayout :breadcrumbs="breadcrumbs">
         <Form action="edit" :brand="page.props.brand" />
     </AppLayout>

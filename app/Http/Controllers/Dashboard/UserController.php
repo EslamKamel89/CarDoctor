@@ -14,6 +14,7 @@ class UserController extends Controller {
      * Display a listing of the resource.
      */
     public function index() {
+        $this->authorize('users.view');
         return inertia('admin/users/Index', [
             'users' => UserResource::collection(User::with(['roles'])->get()),
         ]);
@@ -23,6 +24,7 @@ class UserController extends Controller {
      * Show the form for creating a new resource.
      */
     public function create() {
+        $this->authorize('users.create');
         return inertia('admin/users/Create', [
             'roles' => Role::all(),
         ]);
@@ -32,6 +34,7 @@ class UserController extends Controller {
      * Store a newly created resource in storage.
      */
     public function store(Request $request) {
+        $this->authorize('users.create');
         $validated =   $request->validate([
             'name' => ['required', 'max:255', 'min:2'],
             'email' => ['required', 'email', 'unique:users,email'],
@@ -50,6 +53,7 @@ class UserController extends Controller {
      * Display the specified resource.
      */
     public function show(User $user) {
+        $this->authorize('users.view');
         return $user;
     }
 
@@ -57,6 +61,7 @@ class UserController extends Controller {
      * Show the form for editing the specified resource.
      */
     public function edit(User $user) {
+        $this->authorize('users.edit');
         $user->load(['roles']);
         return inertia('admin/users/Update', ['user' => $user, 'roles' => Role::all(),]);
     }
@@ -65,6 +70,7 @@ class UserController extends Controller {
      * Update the specified resource in storage.
      */
     public function update(Request $request, User $user) {
+        $this->authorize('users.edit');
         $validated =   $request->validate([
             'name' => ['required', 'max:255', 'min:2'],
             'email' => ['required', 'email', Rule::unique('users', 'email')->ignoreModel($user)],
@@ -83,6 +89,7 @@ class UserController extends Controller {
      * Remove the specified resource from storage.
      */
     public function destroy(User $user) {
+        $this->authorize('users.delete');
         $user->delete();
         return redirect()->route('users.index')->with('success', 'User Deleted Successfully');
     }

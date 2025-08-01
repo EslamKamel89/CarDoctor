@@ -88,7 +88,7 @@ const deleteRole = (role: Role) => {
                                         <Show :role-id="role.id" />
                                     </template>
                                 </CustomDialog>
-                                <Link v-if="can('roles.update')" :href="route('roles.edit', { role: role.id })">
+                                <Link v-if="can('roles.edit')" :href="route('roles.edit', { role: role.id })">
                                     <Button type="button" variant="secondary" size="sm"><Pen /></Button>
                                 </Link>
                             </div>

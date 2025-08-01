@@ -11,6 +11,7 @@ import { BreadcrumbItem, User } from '@/types';
 import { Head, Link, router } from '@inertiajs/vue3';
 import { useBreakpoints } from '@vueuse/core';
 import { ChevronDown, Eye, Pen, Plus, Trash2 } from 'lucide-vue-next';
+import Show from './Show.vue';
 
 const props = defineProps<{
     users: User[];
@@ -53,11 +54,11 @@ const deleteUser = (user: User) => {
             <Table class="hidden md:table">
                 <TableHeader>
                     <TableRow>
-                        <TableHead class="w-[100px]"> الاسم </TableHead>
-                        <TableHead>البريد الإلكتروني</TableHead>
-                        <TableHead> الأدوار </TableHead>
-                        <TableHead> تاريخ الإنشاء </TableHead>
-                        <TableHead class="text-right"> الإجراءات </TableHead>
+                        <TableHead class="text-start"> الاسم </TableHead>
+                        <TableHead class="text-start">البريد الإلكتروني</TableHead>
+                        <TableHead class="text-start"> الأدوار </TableHead>
+                        <TableHead class="text-start"> تاريخ الإنشاء </TableHead>
+                        <TableHead class="text-end"> الإجراءات </TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -85,7 +86,7 @@ const deleteUser = (user: User) => {
                                         <Show :user-id="user.id" />
                                     </template>
                                 </CustomDialog>
-                                <Link v-if="can('users.update')" :href="route('users.edit', { user: user.id })">
+                                <Link v-if="can('users.edit')" :href="route('users.edit', { user: user.id })">
                                     <Button type="button" variant="secondary" size="sm"><Pen /></Button>
                                 </Link>
                             </div>

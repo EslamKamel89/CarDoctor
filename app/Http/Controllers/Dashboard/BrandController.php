@@ -30,6 +30,7 @@ class BrandController extends Controller {
 
 
     public function store(BrandRequest $request) {
+        $this->authorize('brands.create');
         Brand::create($request->validated());
 
         return redirect()->route('brands.index')
@@ -38,6 +39,7 @@ class BrandController extends Controller {
 
 
     public function show(Brand $brand) {
+        $this->authorize('brands.view');
         return BrandResource::make($brand);
     }
 
@@ -52,6 +54,7 @@ class BrandController extends Controller {
 
 
     public function update(BrandRequest $request, Brand $brand) {
+        $this->authorize('brands.edit');
         $brand->update($request->validated());
 
         return redirect()->route('brands.index')

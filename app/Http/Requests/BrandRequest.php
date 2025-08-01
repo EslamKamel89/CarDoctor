@@ -20,8 +20,7 @@ class BrandRequest extends FormRequest {
     public function rules(): array {
         return [
             'name_ar' => [
-                'sometimes',
-                'nullable',
+                'required',
                 'string',
                 'max:255',
                 'unique:brands,name_ar'
