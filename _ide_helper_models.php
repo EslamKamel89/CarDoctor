@@ -277,12 +277,34 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * @property-read \App\Models\Client|null $client
- * @property-read \App\Models\Invoice|null $invoice
+ * @property int $id
+ * @property int $invoice_id
+ * @property int $client_id
+ * @property numeric $original_amount
+ * @property numeric $paid_amount
+ * @property numeric $remaining_amount
+ * @property \Illuminate\Support\Carbon|null $due_date
+ * @property string|null $notes
+ * @property bool $is_settled
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Client $client
+ * @property-read \App\Models\Invoice $invoice
  * @method static \Database\Factories\DebtFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt whereClientId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt whereDueDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt whereInvoiceId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt whereIsSettled($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt whereNotes($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt whereOriginalAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt wherePaidAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt whereRemainingAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt whereUpdatedAt($value)
  */
 	class Debt extends \Eloquent {}
 }
@@ -322,6 +344,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice whereUserId($value)
  * @mixin \Eloquent
+ * @property numeric $actual_total
  * @property-read \App\Models\Client|null $client
  * @property-read \App\Models\ClientVehicle|null $clientVehicle
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CreditNote> $creditNotes
@@ -335,6 +358,7 @@ namespace App\Models{
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\InvoiceItem> $items
  * @property-read int|null $items_count
  * @property-read \App\Models\User|null $user
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice whereActualTotal($value)
  */
 	class Invoice extends \Eloquent {}
 }
@@ -362,6 +386,8 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|InvoiceItem whereUnitPrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|InvoiceItem whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\Invoice $invoice
+ * @property-read \App\Models\Product $product
  */
 	class InvoiceItem extends \Eloquent {}
 }
