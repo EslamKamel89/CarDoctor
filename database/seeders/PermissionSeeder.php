@@ -10,56 +10,59 @@ class PermissionSeeder extends Seeder {
     /**
      * Run the database seeds.
      */
-    public function run(): void {
-        $permissions = [
-            'users.view' => [
-                'en' => 'users.view',
-                'ar' => 'عرض المستخدمين'
-            ],
-            'users.create' => [
-                'en' => 'users.create',
-                'ar' => 'إنشاء مستخدم'
-            ],
-            'users.delete' => [
-                'en' => 'users.delete',
-                'ar' => 'حذف مستخدم'
-            ],
-            'users.update' => [
-                'en' => 'users.update',
-                'ar' => 'تحديث مستخدم'
-            ],
-            'roles.view' => [
-                'en' => 'roles.view',
-                'ar' => 'عرض الأدوار'
-            ],
-            'roles.create' => [
-                'en' => 'roles.create',
-                'ar' => 'إنشاء دور'
-            ],
-            'roles.delete' => [
-                'en' => 'roles.delete',
-                'ar' => 'حذف دور'
-            ],
-            'roles.update' => [
-                'en' => 'roles.update',
-                'ar' => 'تحديث دور'
-            ],
-            // You can easily add more permissions in the same format:
-            'settings.view' => [
-                'en' => 'settings.view',
-                'ar' => 'عرض الإعدادات'
-            ],
-            'settings.edit' => [
-                'en' => 'settings.edit',
-                'ar' => 'تعديل الإعدادات'
-            ]
+    static array $resources = [
+        'users',
+        'roles',
+        'brands',
+        'car_models',
+        'categories',
+        'warehouses',
+        'clients',
+        'products',
+        'labours',
+        'invoices',
+        'debts',
+        'credit_notes',
+        'settings',
+        'audit_logs',
+        'stock_logs',
+    ];
+    static array $actions = [
+        'view' => ['ar' => 'عرض', 'en' => 'view'],
+        'create' => ['ar' => 'إنشاء', 'en' => 'create'],
+        'edit' => ['ar' => 'تعديل', 'en' => 'edit'],
+        'delete' => ['ar' => 'حذف', 'en' => 'delete'],
+    ];
+    static public function getArabicLabel(string $resource): string {
+        $labels = [
+            'users' => 'المستخدمين',
+            'roles' => 'الأدوار',
+            'brands' => 'العلامات التجارية',
+            'car_models' => 'موديلات السيارات',
+            'categories' => 'الفئات',
+            'warehouses' => 'المستودعات',
+            'clients' => 'العملاء',
+            'products' => 'المنتجات',
+            'labours' => 'أعمال الصيانة',
+            'invoices' => 'الفواتير',
+            'debts' => 'المديونيات',
+            'credit_notes' => 'مذكرات الإرجاع',
+            'settings' => 'الإعدادات',
+            'audit_logs' => 'سجلات التدقيق',
+            'stock_logs' => 'سجلات المخزون',
         ];
-        foreach ($permissions as $key => $value) {
-            Permission::create([
-                'name' => $value['en'],
-                'name_ar' => $value['ar'],
-                'guard_name' => 'web',
-            ]);
+
+        return $labels[$resource] ?? ucfirst($resource);
+    }
+    public function run(): void {
+        foreach (self::$resources as $resource) {
+            foreach (self::$actions as $action => $names) {
+                Permission::create([
+                    'name' => "{$resource}.{$action}",
+                    'name_ar' => "{$names['ar']} {$this->getArabicLabel($resource)}",
+                    'guard_name' => 'web',
+                ]);
+            }
         }
     }
 }
