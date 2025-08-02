@@ -28,7 +28,7 @@ class CarModelController extends Controller {
     public function create() {
         $this->authorize('car_models.create');
 
-        $brands = Brand::orderBy('name_ar')->pluck('name', 'id');
+        $brands = Brand::orderBy('name_ar')->pluck('name_ar', 'id');
 
         return inertia('admin/CarModels/Create', compact('brands'));
     }
@@ -50,7 +50,7 @@ class CarModelController extends Controller {
         $this->authorize('car_models.edit');
 
         $carModel->load('brand');
-        $brands = Brand::orderBy('name_ar')->pluck('name', 'id');
+        $brands = Brand::orderBy('name_ar')->pluck('name_ar', 'id');
 
         return inertia('admin/CarModels/Edit', [
             'car_model' => new CarModelResource($carModel),

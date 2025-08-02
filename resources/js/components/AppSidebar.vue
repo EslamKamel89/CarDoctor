@@ -56,7 +56,7 @@ onMounted(() => {
     }
     if (can('car_models.view')) {
         mainNavItems.value.push({
-            title: 'جدول موديلات السيارات',
+            title: 'موديلات السيارات',
             href: '/car-models',
             icon: Gauge,
         });

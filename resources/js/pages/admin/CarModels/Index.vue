@@ -83,7 +83,7 @@ const deleteCarModel = (carModel: CarModel) => {
                         <TableCell class="">
                             <div class="flex w-full items-center justify-end space-x-2">
                                 <Button
-                                    v-if="can('car-models.delete')"
+                                    v-if="can('car_models.delete')"
                                     @click="deleteCarModel(car_model)"
                                     type="button"
                                     variant="destructive"

@@ -25,6 +25,7 @@ export interface Brand {
 }
 export interface CarModel {
     id: number;
+    brand_id: number;
     name: string;
     name_ar: string;
     name_en: string;
