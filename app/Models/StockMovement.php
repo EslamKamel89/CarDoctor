@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
@@ -43,6 +44,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement whereUnitCost($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement whereWarehouseId($value)
+ * @property-read \App\Models\Product $product
+ * @property-read \App\Models\User $recordedBy
+ * @property-read \App\Models\Warehouse|null $warehouse
  * @mixin \Eloquent
  */
 class StockMovement extends Model {
@@ -61,4 +65,18 @@ class StockMovement extends Model {
         'recorded_by_user_id',
         'notes',
     ];
+    protected $casts = [
+        'quantity' => 'integer',
+        'unit_cost' => 'decimal:2',
+        'total_cost' => 'decimal:2',
+    ];
+    public function product(): BelongsTo {
+        return $this->belongsTo(Product::class);
+    }
+    public function warehouse(): BelongsTo {
+        return $this->belongsTo(Warehouse::class);
+    }
+    public function recordedBy(): BelongsTo {
+        return  $this->belongsTo(User::class, 'recorded_by_user_id');
+    }
 }

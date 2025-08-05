@@ -541,11 +541,11 @@ namespace App\Models{
  * @property int $quantity_on_hand
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Product whereCurrentCostPrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Product whereQuantityOnHand($value)
- * @mixin \Eloquent
  * @property-read bool $is_in_stock
  * @property-read \App\Models\StockMovement|null $latestStockMovement
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\StockMovement> $stockMovements
  * @property-read int|null $stock_movements_count
+ * @mixin \Eloquent
  */
 	class Product extends \Eloquent {}
 }
@@ -634,6 +634,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement whereUnitCost($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement whereWarehouseId($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\Product $product
+ * @property-read \App\Models\User $recordedBy
+ * @property-read \App\Models\Warehouse|null $warehouse
  */
 	class StockMovement extends \Eloquent {}
 }
