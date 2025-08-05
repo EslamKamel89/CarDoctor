@@ -537,7 +537,15 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Product withoutTrashed()
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Product whereDeletedAt($value)
+ * @property string $current_cost_price
+ * @property int $quantity_on_hand
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Product whereCurrentCostPrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Product whereQuantityOnHand($value)
  * @mixin \Eloquent
+ * @property-read bool $is_in_stock
+ * @property-read \App\Models\StockMovement|null $latestStockMovement
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\StockMovement> $stockMovements
+ * @property-read int|null $stock_movements_count
  */
 	class Product extends \Eloquent {}
 }
@@ -603,6 +611,28 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement whereUpdatedAt($value)
+ * @property int $product_id
+ * @property int|null $warehouse_id
+ * @property int $quantity
+ * @property string $unit_cost
+ * @property string $total_cost
+ * @property string $type
+ * @property string $reference_type
+ * @property int $reference_id
+ * @property int $recorded_by_user_id
+ * @property string|null $notes
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement whereNotes($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement whereProductId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement whereQuantity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement whereRecordedByUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement whereReferenceId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement whereReferenceType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement whereTotalCost($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement whereUnitCost($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement whereWarehouseId($value)
  * @mixin \Eloquent
  */
 	class StockMovement extends \Eloquent {}

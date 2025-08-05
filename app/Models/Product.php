@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
@@ -58,6 +59,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property int $quantity_on_hand
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Product whereCurrentCostPrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Product whereQuantityOnHand($value)
+ * @property-read bool $is_in_stock
+ * @property-read \App\Models\StockMovement|null $latestStockMovement
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\StockMovement> $stockMovements
+ * @property-read int|null $stock_movements_count
  * @mixin \Eloquent
  */
 class Product extends Model {
@@ -81,6 +86,8 @@ class Product extends Model {
     protected $casts = [
         'buy_price' => 'decimal:2',
         'sell_price' => 'decimal:2',
+        'current_cost_price' => 'decimal:2',
+        'quantity_on_hand' => 'integer',
         'min_stock_quantity' => 'integer',
     ];
     public function category(): BelongsTo {
@@ -114,5 +121,15 @@ class Product extends Model {
         return $this->warehouses()
             ->where('warehouse_id', $warehouseId)
             ->first()?->pivot->stock_quantity ?? 0;
+    }
+    public function stockMovements(): HasMany {
+        return $this->hasMany(StockMovement::class);
+    }
+    public function latestStockMovement(): HasOne {
+        return $this->hasOne(StockMovement::class)
+            ->latest('created_at');
+    }
+    public function getIsInStockAttribute(): bool {
+        return $this->quantity_on_hand > 0;
     }
 }
