@@ -30,6 +30,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Labour onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Labour withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Labour withoutTrashed()
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Labour whereDeletedAt($value)
  * @mixin \Eloquent
  */
 class Labour extends Model {

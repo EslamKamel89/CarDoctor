@@ -15,6 +15,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement query()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement withoutTrashed()
+ * @property int $id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement whereUpdatedAt($value)
  * @mixin \Eloquent
  */
 class StockMovement extends Model {

@@ -40,6 +40,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt withoutTrashed()
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt whereDeletedAt($value)
  * @mixin \Eloquent
  */
 class Debt extends Model {

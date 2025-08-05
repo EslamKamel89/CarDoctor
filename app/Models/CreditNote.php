@@ -44,6 +44,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote withoutTrashed()
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote whereDeletedAt($value)
  * @mixin \Eloquent
  */
 class CreditNote extends Model {

@@ -41,6 +41,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Category onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Category withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Category withoutTrashed()
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Category whereDeletedAt($value)
  * @mixin \Eloquent
  */
 class Category extends Model {

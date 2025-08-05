@@ -44,6 +44,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User withoutTrashed()
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereDeletedAt($value)
  * @mixin \Eloquent
  */
 class User extends Authenticatable {

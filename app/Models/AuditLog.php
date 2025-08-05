@@ -44,6 +44,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog withoutTrashed()
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog whereDeletedAt($value)
  * @mixin \Eloquent
  */
 class AuditLog extends Model {

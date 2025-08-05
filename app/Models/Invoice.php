@@ -62,6 +62,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice withoutTrashed()
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice whereDeletedAt($value)
  * @mixin \Eloquent
  */
 class Invoice extends Model {

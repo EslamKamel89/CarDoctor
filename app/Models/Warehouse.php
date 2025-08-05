@@ -41,6 +41,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Warehouse onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Warehouse withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Warehouse withoutTrashed()
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Warehouse whereDeletedAt($value)
  * @mixin \Eloquent
  */
 class Warehouse extends Model {

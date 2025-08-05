@@ -47,6 +47,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Client onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Client withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Client withoutTrashed()
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Client whereDeletedAt($value)
  * @mixin \Eloquent
  */
 class Client extends Model {

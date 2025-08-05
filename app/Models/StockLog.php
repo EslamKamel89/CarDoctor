@@ -46,6 +46,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog withoutTrashed()
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog whereDeletedAt($value)
  * @mixin \Eloquent
  */
 class StockLog extends Model {

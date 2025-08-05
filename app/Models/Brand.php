@@ -29,6 +29,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Brand onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Brand withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Brand withoutTrashed()
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Brand whereDeletedAt($value)
  * @mixin \Eloquent
  */
 class Brand extends Model {

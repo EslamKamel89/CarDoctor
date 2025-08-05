@@ -52,6 +52,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Product onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Product withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Product withoutTrashed()
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Product whereDeletedAt($value)
  * @mixin \Eloquent
  */
 class Product extends Model {
