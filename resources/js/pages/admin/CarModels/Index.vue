@@ -11,7 +11,8 @@ import { BreadcrumbItem } from '@/types';
 import { CarModel } from '@/types/app';
 import { Head, Link, router } from '@inertiajs/vue3';
 import { useBreakpoints } from '@vueuse/core';
-import { ChevronDown, Eye, Pen, Plus, Trash2 } from 'lucide-vue-next';
+import { ChevronDown, Eye, Filter, Pen, Plus, Trash2 } from 'lucide-vue-next';
+import CarModelFilters from './CarModelFilters.vue';
 import Show from './Show.vue';
 
 defineProps<{
@@ -46,6 +47,17 @@ const deleteCarModel = (carModel: CarModel) => {
 
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
+            <Card>
+                <CardHeader>
+                    <CardTitle class="flex items-center text-base">
+                        <Filter class="ml-2 h-4 w-4" />
+                        تصفية النتائج
+                    </CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <CarModelFilters />
+                </CardContent>
+            </Card>
             <div class="flex w-full justify-end">
                 <Link :href="route('car-models.create')" v-if="can('car_models.create')">
                     <Button type="button">

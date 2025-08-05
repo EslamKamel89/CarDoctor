@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -34,6 +35,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property-read string $year_range_formatted
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
  * @property-read int|null $products_count
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CarModel yearFrom($year)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CarModel yearTo($year)
  * @mixin \Eloquent
  */
 class CarModel extends Model {
@@ -71,5 +74,12 @@ class CarModel extends Model {
         if (!isset($this->year_range)) return '';
         $years = (array) $this->year_range;
         return count($years) > 1 ? "{$years[0]} -> {$years[1]}" : "{$years[0]} -> حتي الان  ";
+    }
+    public function scopeYearFrom(Builder $query, $year) {
+        return $query->whereRaw('JSON_EXTRACT(year_range, "$[0]") >= ?', [$year]);
+    }
+
+    public function scopeYearTo(Builder $query, $year) {
+        return $query->whereRaw('JSON_EXTRACT(year_range, "$[1]") <= ?', [$year]);
     }
 }

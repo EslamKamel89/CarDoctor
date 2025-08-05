@@ -13,14 +13,22 @@ class CarModelController extends Controller {
 
     public function index() {
         $this->authorize('car_models.view');
-
-        $carModels = CarModel::with('brand')
-            ->orderBy('name_ar')
-            ->get();
-
+        $brandId = request('filter.brand_id');
+        $yearFrom = request('filter.year_from');
+        $yearTo = request('filter.year_to');
+        $query = CarModel::query()->with('brand')->orderBy('name_ar');
+        if ($brandId) $query->where('brand_id', $brandId);
+        if ($yearFrom) $query->yearFrom($yearFrom);
+        if ($yearTo)  $query->yearTo($yearTo);
+        $carModels = $query->get();
         return inertia('admin/CarModels/Index',  [
             'car_models' => CarModelResource::collection($carModels),
-            'brands' => Brand::orderBy('name_ar')->pluck('name_ar', 'id'), // For dropdown
+            'brands' => Brand::select(['id', 'name_ar'])->orderBy('name_ar')->get(), // For dropdown
+            'filters' => [
+                'brand_id' => $brandId,
+                'year_from' => $yearFrom,
+                'year_to' => $yearTo,
+            ],
         ]);
     }
 
@@ -28,9 +36,11 @@ class CarModelController extends Controller {
     public function create() {
         $this->authorize('car_models.create');
 
-        $brands = Brand::orderBy('name_ar')->pluck('name_ar', 'id');
 
-        return inertia('admin/CarModels/Create', compact('brands'));
+
+        return inertia('admin/CarModels/Create', [
+            'brands' => Brand::select(['id', 'name_ar'])->orderBy('name_ar')->get(), // For dropdown
+        ]);
     }
 
 
@@ -50,11 +60,10 @@ class CarModelController extends Controller {
         $this->authorize('car_models.edit');
 
         $carModel->load('brand');
-        $brands = Brand::orderBy('name_ar')->pluck('name_ar', 'id');
 
         return inertia('admin/CarModels/Edit', [
             'car_model' => new CarModelResource($carModel),
-            'brands' => $brands,
+            'brands' => Brand::select(['id', 'name_ar'])->orderBy('name_ar')->get(), // For dropdown
         ]);
     }
 

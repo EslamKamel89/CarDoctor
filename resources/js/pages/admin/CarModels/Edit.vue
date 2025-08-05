@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import AppLayout from '@/layouts/AppLayout.vue';
 import { AppPageProps, BreadcrumbItem } from '@/types';
-import { CarModel } from '@/types/app';
+import { Brand, CarModel } from '@/types/app';
 import { Head, usePage } from '@inertiajs/vue3';
 import Form from './Form.vue';
 
@@ -16,11 +16,12 @@ const breadcrumbs: BreadcrumbItem[] = [
         href: page.url,
     },
 ];
+const props = defineProps<{ brands: Brand[] }>();
 </script>
 
 <template>
     <Head title="تحديث موديل سيارة" />
     <AppLayout :breadcrumbs="breadcrumbs">
-        <Form action="edit" :car_model="page.props.car_model" />
+        <Form action="edit" :car_model="page.props.car_model" :brands="brands" />
     </AppLayout>
 </template>

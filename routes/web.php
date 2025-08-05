@@ -25,15 +25,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('/brands', BrandController::class);
     Route::resource('/car-models', CarModelController::class);
 });
-Route::get('/test/{id}', function () {
+Route::get('/test', function () {
 
-    $carModels = CarModel::with('brand')
-        ->orderBy('name_ar')
-        ->get();
-    return response()->json([
-        'car_models' => CarModelResource::collection($carModels),
-        'brands' => Brand::orderBy('name_ar')->pluck('name_ar', 'id'), // For dropdown
-    ]);
+    return CarModel::yearFrom(2014)->get();
 });
 
 

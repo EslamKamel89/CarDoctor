@@ -101,6 +101,8 @@ namespace App\Models{
  * @property-read string $year_range_formatted
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
  * @property-read int|null $products_count
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CarModel yearFrom($year)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CarModel yearTo($year)
  * @mixin \Eloquent
  */
 	class CarModel extends \Eloquent {}
@@ -369,8 +371,8 @@ namespace App\Models{
  * @property-read int|null $items_count
  * @property-read \App\Models\User|null $user
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice whereActualTotal($value)
- * @mixin \Eloquent
  * @property-read \App\Models\Debt|null $debt
+ * @mixin \Eloquent
  */
 	class Invoice extends \Eloquent {}
 }
