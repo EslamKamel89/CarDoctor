@@ -2454,8 +2454,8 @@ namespace PHPSTORM_META {
 'roles.create','roles.store','roles.show','roles.edit','roles.update',
 'roles.destroy','brands.index','brands.create','brands.store','brands.show',
 'brands.edit','brands.update','brands.destroy','car-models.index','car-models.create',
-'car-models.store','car-models.show','car-models.edit','car-models.update','car-models.destroy','appearance','login',
-'logout','storage.local',);
+'car-models.store','car-models.show','car-models.edit','car-models.update','car-models.destroy','appearance','login','logout',
+'storage.local',);
         registerArgumentsSet('views', 
 'app','laravel-exceptions-renderer::components.card','laravel-exceptions-renderer::components.context','laravel-exceptions-renderer::components.editor','laravel-exceptions-renderer::components.header',
 'laravel-exceptions-renderer::components.icons.chevron-down','laravel-exceptions-renderer::components.icons.chevron-up','laravel-exceptions-renderer::components.icons.computer-desktop','laravel-exceptions-renderer::components.icons.moon','laravel-exceptions-renderer::components.icons.sun',

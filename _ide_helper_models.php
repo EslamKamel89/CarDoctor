@@ -45,10 +45,12 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog whereUserId($value)
  * @property-read mixed $action_label
  * @property-read \App\Models\User $user
- * @mixin \Eloquent
  * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog withoutTrashed()
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog whereDeletedAt($value)
+ * @mixin \Eloquent
  */
 	class AuditLog extends \Eloquent {}
 }
@@ -72,10 +74,12 @@ namespace App\Models{
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CarModel> $carModels
  * @property-read int|null $car_models_count
  * @property-read string $name
- * @mixin \Eloquent
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Brand onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Brand withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Brand withoutTrashed()
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Brand whereDeletedAt($value)
+ * @mixin \Eloquent
  */
 	class Brand extends \Eloquent {}
 }
@@ -109,10 +113,12 @@ namespace App\Models{
  * @property-read int|null $products_count
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CarModel yearFrom($year)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CarModel yearTo($year)
- * @mixin \Eloquent
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CarModel onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CarModel withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CarModel withoutTrashed()
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CarModel whereDeletedAt($value)
+ * @mixin \Eloquent
  */
 	class CarModel extends \Eloquent {}
 }
@@ -147,10 +153,12 @@ namespace App\Models{
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
  * @property-read int|null $products_count
  * @property-read mixed $name
- * @mixin \Eloquent
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Category onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Category withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Category withoutTrashed()
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Category whereDeletedAt($value)
+ * @mixin \Eloquent
  */
 	class Category extends \Eloquent {}
 }
@@ -192,10 +200,12 @@ namespace App\Models{
  * @property-read float $open_debts_amount
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Invoice> $invoices
  * @property-read int|null $invoices_count
- * @mixin \Eloquent
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Client onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Client withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Client withoutTrashed()
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Client whereDeletedAt($value)
+ * @mixin \Eloquent
  */
 	class Client extends \Eloquent {}
 }
@@ -231,10 +241,12 @@ namespace App\Models{
  * @property-read string $display_name
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Invoice> $invoices
  * @property-read int|null $invoices_count
- * @mixin \Eloquent
  * @method static \Illuminate\Database\Eloquent\Builder<static>|ClientVehicle onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|ClientVehicle withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|ClientVehicle withoutTrashed()
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ClientVehicle whereDeletedAt($value)
+ * @mixin \Eloquent
  */
 	class ClientVehicle extends \Eloquent {}
 }
@@ -272,10 +284,12 @@ namespace App\Models{
  * @property-read \App\Models\Invoice $invoice
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CreditNoteItem> $items
  * @property-read int|null $items_count
- * @mixin \Eloquent
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote withoutTrashed()
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote whereDeletedAt($value)
+ * @mixin \Eloquent
  */
 	class CreditNote extends \Eloquent {}
 }
@@ -303,10 +317,12 @@ namespace App\Models{
  * @property-read \App\Models\CreditNote $creditNote
  * @property-read mixed $product_name
  * @property-read \App\Models\InvoiceItem $invoiceItem
- * @mixin \Eloquent
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem withoutTrashed()
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem whereDeletedAt($value)
+ * @mixin \Eloquent
  */
 	class CreditNoteItem extends \Eloquent {}
 }
@@ -341,10 +357,12 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt wherePaidAmount($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt whereRemainingAmount($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt whereUpdatedAt($value)
- * @mixin \Eloquent
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt withoutTrashed()
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt whereDeletedAt($value)
+ * @mixin \Eloquent
  */
 	class Debt extends \Eloquent {}
 }
@@ -399,10 +417,12 @@ namespace App\Models{
  * @property-read \App\Models\User|null $user
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice whereActualTotal($value)
  * @property-read \App\Models\Debt|null $debt
- * @mixin \Eloquent
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice withoutTrashed()
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice whereDeletedAt($value)
+ * @mixin \Eloquent
  */
 	class Invoice extends \Eloquent {}
 }
@@ -431,10 +451,12 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|InvoiceItem whereUpdatedAt($value)
  * @property-read \App\Models\Invoice $invoice
  * @property-read \App\Models\Product $product
- * @mixin \Eloquent
  * @method static \Illuminate\Database\Eloquent\Builder<static>|InvoiceItem onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|InvoiceItem withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|InvoiceItem withoutTrashed()
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|InvoiceItem whereDeletedAt($value)
+ * @mixin \Eloquent
  */
 	class InvoiceItem extends \Eloquent {}
 }
@@ -460,10 +482,12 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Labour whereNameEn($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Labour whereUpdatedAt($value)
  * @property-read mixed $name
- * @mixin \Eloquent
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Labour onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Labour withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Labour withoutTrashed()
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Labour whereDeletedAt($value)
+ * @mixin \Eloquent
  */
 	class Labour extends \Eloquent {}
 }
@@ -508,10 +532,12 @@ namespace App\Models{
  * @property-read int|null $invoice_items_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Warehouse> $warehouses
  * @property-read int|null $warehouses_count
- * @mixin \Eloquent
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Product onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Product withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Product withoutTrashed()
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Product whereDeletedAt($value)
+ * @mixin \Eloquent
  */
 	class Product extends \Eloquent {}
 }
@@ -552,10 +578,12 @@ namespace App\Models{
  * @property-read \App\Models\Product $product
  * @property-read \App\Models\User $user
  * @property-read \App\Models\Warehouse $warehouse
- * @mixin \Eloquent
  * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog withoutTrashed()
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog whereDeletedAt($value)
+ * @mixin \Eloquent
  */
 	class StockLog extends \Eloquent {}
 }
@@ -569,6 +597,13 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement query()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement withoutTrashed()
+ * @property int $id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 	class StockMovement extends \Eloquent {}
 }
@@ -605,10 +640,12 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User role($roles, $guard = null, $without = false)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User withoutPermission($permissions)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User withoutRole($roles, $guard = null)
- * @mixin \Eloquent
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User withoutTrashed()
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereDeletedAt($value)
+ * @mixin \Eloquent
  */
 	class User extends \Eloquent {}
 }
@@ -643,10 +680,12 @@ namespace App\Models{
  * @property-read string $name
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
  * @property-read int|null $products_count
- * @mixin \Eloquent
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Warehouse onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Warehouse withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Warehouse withoutTrashed()
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Warehouse whereDeletedAt($value)
+ * @mixin \Eloquent
  */
 	class Warehouse extends \Eloquent {}
 }

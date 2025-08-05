@@ -19,6 +19,8 @@ return new class extends Migration {
             $table->text('description_ar')->nullable();
             $table->decimal('buy_price', 15, 2)->nullable();
             $table->decimal('sell_price', 15, 2)->nullable();
+            $table->decimal('current_cost_price', 15, 2)->default(0.00);
+            $table->integer('quantity_on_hand')->default(0);
             $table->integer('min_stock_quantity')->default(0);
             $table->text('notes')->nullable();
             $table->softDeletes();

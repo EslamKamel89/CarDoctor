@@ -25,10 +25,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('/brands', BrandController::class);
     Route::resource('/car-models', CarModelController::class);
 });
-Route::get('/test', function () {
+// Route::get('/test', function () {
 
-    return CarModel::yearFrom(2014)->get();
-});
+//     return CarModel::yearFrom(2014)->get();
+// });
 
 
 

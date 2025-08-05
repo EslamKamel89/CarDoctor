@@ -54,6 +54,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Product withoutTrashed()
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Product whereDeletedAt($value)
+ * @property string $current_cost_price
+ * @property int $quantity_on_hand
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Product whereCurrentCostPrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Product whereQuantityOnHand($value)
  * @mixin \Eloquent
  */
 class Product extends Model {
@@ -71,6 +75,8 @@ class Product extends Model {
         'sell_price',
         'min_stock_quantity',
         'notes',
+        'current_cost_price',
+        'quantity_on_hand',
     ];
     protected $casts = [
         'buy_price' => 'decimal:2',
