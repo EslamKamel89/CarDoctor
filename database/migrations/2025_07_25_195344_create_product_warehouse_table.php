@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->foreignId('product_id')->constrained('products')->cascadeOnDelete();
             $table->foreignId('warehouse_id')->constrained('warehouses')->cascadeOnDelete();
             $table->integer('stock_quantity')->default(0);
+            $table->softDeletes();
             $table->timestamps();
             $table->unique(['product_id', 'warehouse_id']);
         });

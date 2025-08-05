@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->text('reason_en');
             $table->decimal('total_refund_amount', 15, 2);
             $table->enum('payment_refund_method', ['cash', 'card', 'no-refund'])->unique();
+            $table->softDeletes();
             $table->timestamps();
 
             $table->index('credit_note_number');

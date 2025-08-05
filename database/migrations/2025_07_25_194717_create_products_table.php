@@ -21,6 +21,7 @@ return new class extends Migration {
             $table->decimal('sell_price', 15, 2)->nullable();
             $table->integer('min_stock_quantity')->default(0);
             $table->text('notes')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

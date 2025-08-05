@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 /**
  * @property int $id
@@ -39,11 +41,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog whereUserId($value)
  * @property-read mixed $action_label
  * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog withoutTrashed()
  * @mixin \Eloquent
  */
 class AuditLog extends Model {
     /** @use HasFactory<\Database\Factories\AuditLogFactory> */
     use HasFactory;
+    use SoftDeletes;
     protected $fillable = [
         'user_id',
         'action',

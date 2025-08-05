@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 /**
  * @property int $id
@@ -39,11 +41,15 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property-read \App\Models\Invoice $invoice
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CreditNoteItem> $items
  * @property-read int|null $items_count
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote withoutTrashed()
  * @mixin \Eloquent
  */
 class CreditNote extends Model {
     /** @use HasFactory<\Database\Factories\CreditNoteFactory> */
     use HasFactory;
+    use SoftDeletes;
     protected $fillable = [
         'invoice_id',
         'client_id',

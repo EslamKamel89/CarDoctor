@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 /**
  * @property int $id
@@ -36,11 +38,15 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property-read string $name
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
  * @property-read int|null $products_count
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Warehouse onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Warehouse withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Warehouse withoutTrashed()
  * @mixin \Eloquent
  */
 class Warehouse extends Model {
     /** @use HasFactory<\Database\Factories\WarehouseFactory> */
     use HasFactory;
+    use SoftDeletes;
     protected $fillable = [
         'name_ar',
         'name_en',

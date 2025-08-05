@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 /**
  * @property int $id
@@ -25,11 +27,15 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Labour whereNameEn($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Labour whereUpdatedAt($value)
  * @property-read mixed $name
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Labour onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Labour withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Labour withoutTrashed()
  * @mixin \Eloquent
  */
 class Labour extends Model {
     /** @use HasFactory<\Database\Factories\LabourFactory> */
     use HasFactory;
+    use SoftDeletes;
     protected $fillable = [
         'name_ar',
         'name_en',

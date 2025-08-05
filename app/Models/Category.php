@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 /**
  * @property int $id
@@ -36,11 +38,15 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
  * @property-read int|null $products_count
  * @property-read mixed $name
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Category onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Category withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Category withoutTrashed()
  * @mixin \Eloquent
  */
 class Category extends Model {
     /** @use HasFactory<\Database\Factories\CategoryFactory> */
     use HasFactory;
+    use SoftDeletes;
     protected $fillable = [
         'parent_id',
         'name_ar',

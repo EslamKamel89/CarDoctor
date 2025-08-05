@@ -21,6 +21,7 @@ return new class extends Migration {
             $table->json('new_values')->nullable();
             $table->ipAddress('ip_address')->nullable();
             $table->text('user_agent')->nullable();
+            $table->softDeletes();
             $table->timestamps();
 
             $table->index(['user_id', 'action', 'created_at']);

@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->string('name_en')->nullable();
             $table->string('description_ar')->nullable();
             $table->string('description_en')->nullable();
+            $table->softDeletes();
             $table->timestamps();
             $table->index('parent_id');
             $table->index('name_ar');

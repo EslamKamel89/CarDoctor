@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 /**
  * @property int $id
@@ -24,11 +26,15 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CarModel> $carModels
  * @property-read int|null $car_models_count
  * @property-read string $name
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Brand onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Brand withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Brand withoutTrashed()
  * @mixin \Eloquent
  */
 class Brand extends Model {
     /** @use HasFactory<\Database\Factories\BrandFactory> */
     use HasFactory;
+    use SoftDeletes;
     protected $fillable = [
         'name_ar',
         'name_en',

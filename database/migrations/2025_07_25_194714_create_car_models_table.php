@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->string('name_ar')->nullable();
             $table->string('name_en')->nullable();
             $table->json('year_range')->default('[]');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -21,6 +21,7 @@ return new class extends Migration {
             $table->string('reference_type');
             $table->unsignedBigInteger('reference_id');
             $table->text('notes')->nullable();
+            $table->softDeletes();
             $table->timestamps();
 
             $table->index(['product_id', 'created_at']);

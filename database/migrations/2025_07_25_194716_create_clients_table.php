@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->text('address_ar')->nullable();
             $table->text('address_en')->nullable();
             $table->text('notes')->nullable();
+            $table->softDeletes();
             $table->timestamps();
             $table->index('name_ar');
             $table->index('name_en');

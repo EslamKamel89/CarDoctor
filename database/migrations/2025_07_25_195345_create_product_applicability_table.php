@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->foreignId('product_id')->constrained('products')->cascadeOnDelete();
             $table->foreignId('car_model_id')->constrained('car_models')->cascadeOnDelete();
             $table->text('notes')->nullable();
+            $table->softDeletes();
             $table->timestamps();
             $table->unique(['product_id', 'car_model_id']);
         });

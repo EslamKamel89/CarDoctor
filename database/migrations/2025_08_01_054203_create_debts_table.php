@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->date('due_date')->nullable();          // Optional: when to collect
             $table->text('notes')->nullable();
             $table->boolean('is_settled')->default(false); // true when remaining = 0
+            $table->softDeletes();
             $table->timestamps();
 
             $table->index(['client_id', 'is_settled']);

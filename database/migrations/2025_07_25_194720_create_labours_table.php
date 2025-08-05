@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->string('name_en')->nullable();
             $table->decimal('base_fee', 10, 2)->nullable();
             $table->boolean('is_active')->default(true);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

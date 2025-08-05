@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->string('color')->nullable();
             $table->integer('manufacturing_year')->nullable();
             $table->text('notes')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

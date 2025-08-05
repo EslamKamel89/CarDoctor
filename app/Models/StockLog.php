@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 /**
  * @property int $id
@@ -41,11 +43,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property-read \App\Models\Product $product
  * @property-read \App\Models\User $user
  * @property-read \App\Models\Warehouse $warehouse
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog withoutTrashed()
  * @mixin \Eloquent
  */
 class StockLog extends Model {
     /** @use HasFactory<\Database\Factories\StockLogFactory> */
     use HasFactory;
+    use SoftDeletes;
     protected $fillable = [
         'product_id',
         'warehouse_id',

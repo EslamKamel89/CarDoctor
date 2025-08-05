@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 /**
  * @property int $id
@@ -35,11 +37,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt wherePaidAmount($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt whereRemainingAmount($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt withoutTrashed()
  * @mixin \Eloquent
  */
 class Debt extends Model {
     /** @use HasFactory<\Database\Factories\DebtFactory> */
     use HasFactory;
+    use SoftDeletes;
     protected $fillable = [
         'invoice_id',
         'client_id',

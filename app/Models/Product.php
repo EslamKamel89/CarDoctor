@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 /**
  * @property int $id
@@ -47,11 +49,15 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property-read int|null $invoice_items_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Warehouse> $warehouses
  * @property-read int|null $warehouses_count
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Product onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Product withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Product withoutTrashed()
  * @mixin \Eloquent
  */
 class Product extends Model {
     /** @use HasFactory<\Database\Factories\ProductFactory> */
     use HasFactory;
+    use SoftDeletes;
     protected $fillable = [
         'category_id',
         'code',

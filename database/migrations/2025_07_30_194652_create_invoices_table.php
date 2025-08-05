@@ -23,6 +23,7 @@ return new class extends Migration {
             $table->enum('payment_method', ['cash', 'card', 'bank_transfer'])->default('cash');
             $table->json('labor_info')->nullable();
             $table->text('notes')->nullable();
+            $table->softDeletes();
             $table->timestamps();
             $table->index('status');
             $table->index('invoice_number');

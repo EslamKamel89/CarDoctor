@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 /**
  * @property int $id
@@ -28,11 +30,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property-read \App\Models\CreditNote $creditNote
  * @property-read mixed $product_name
  * @property-read \App\Models\InvoiceItem $invoiceItem
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem withoutTrashed()
  * @mixin \Eloquent
  */
 class CreditNoteItem extends Model {
     /** @use HasFactory<\Database\Factories\CreditNoteItemFactory> */
     use HasFactory;
+    use SoftDeletes;
     protected $fillable = [
         'credit_note_id',
         'invoice_item_id',

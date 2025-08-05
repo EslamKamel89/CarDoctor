@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 /**
  * @property int $id
@@ -29,11 +31,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|InvoiceItem whereUpdatedAt($value)
  * @property-read \App\Models\Invoice $invoice
  * @property-read \App\Models\Product $product
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|InvoiceItem onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|InvoiceItem withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|InvoiceItem withoutTrashed()
  * @mixin \Eloquent
  */
 class InvoiceItem extends Model {
     /** @use HasFactory<\Database\Factories\InvoiceItemFactory> */
     use HasFactory;
+    use SoftDeletes;
     protected $fillable = [
         'invoice_id',
         'product_id',

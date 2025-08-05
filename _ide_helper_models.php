@@ -46,6 +46,9 @@ namespace App\Models{
  * @property-read mixed $action_label
  * @property-read \App\Models\User $user
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|AuditLog withoutTrashed()
  */
 	class AuditLog extends \Eloquent {}
 }
@@ -70,6 +73,9 @@ namespace App\Models{
  * @property-read int|null $car_models_count
  * @property-read string $name
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Brand onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Brand withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Brand withoutTrashed()
  */
 	class Brand extends \Eloquent {}
 }
@@ -104,6 +110,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CarModel yearFrom($year)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CarModel yearTo($year)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CarModel onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CarModel withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CarModel withoutTrashed()
  */
 	class CarModel extends \Eloquent {}
 }
@@ -139,6 +148,9 @@ namespace App\Models{
  * @property-read int|null $products_count
  * @property-read mixed $name
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Category onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Category withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Category withoutTrashed()
  */
 	class Category extends \Eloquent {}
 }
@@ -181,6 +193,9 @@ namespace App\Models{
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Invoice> $invoices
  * @property-read int|null $invoices_count
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Client onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Client withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Client withoutTrashed()
  */
 	class Client extends \Eloquent {}
 }
@@ -217,6 +232,9 @@ namespace App\Models{
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Invoice> $invoices
  * @property-read int|null $invoices_count
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ClientVehicle onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ClientVehicle withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ClientVehicle withoutTrashed()
  */
 	class ClientVehicle extends \Eloquent {}
 }
@@ -255,6 +273,9 @@ namespace App\Models{
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CreditNoteItem> $items
  * @property-read int|null $items_count
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote withoutTrashed()
  */
 	class CreditNote extends \Eloquent {}
 }
@@ -283,6 +304,9 @@ namespace App\Models{
  * @property-read mixed $product_name
  * @property-read \App\Models\InvoiceItem $invoiceItem
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem withoutTrashed()
  */
 	class CreditNoteItem extends \Eloquent {}
 }
@@ -318,6 +342,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt whereRemainingAmount($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Debt withoutTrashed()
  */
 	class Debt extends \Eloquent {}
 }
@@ -373,6 +400,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice whereActualTotal($value)
  * @property-read \App\Models\Debt|null $debt
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice withoutTrashed()
  */
 	class Invoice extends \Eloquent {}
 }
@@ -402,6 +432,9 @@ namespace App\Models{
  * @property-read \App\Models\Invoice $invoice
  * @property-read \App\Models\Product $product
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|InvoiceItem onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|InvoiceItem withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|InvoiceItem withoutTrashed()
  */
 	class InvoiceItem extends \Eloquent {}
 }
@@ -428,6 +461,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Labour whereUpdatedAt($value)
  * @property-read mixed $name
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Labour onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Labour withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Labour withoutTrashed()
  */
 	class Labour extends \Eloquent {}
 }
@@ -473,6 +509,9 @@ namespace App\Models{
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Warehouse> $warehouses
  * @property-read int|null $warehouses_count
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Product onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Product withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Product withoutTrashed()
  */
 	class Product extends \Eloquent {}
 }
@@ -514,8 +553,24 @@ namespace App\Models{
  * @property-read \App\Models\User $user
  * @property-read \App\Models\Warehouse $warehouse
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockLog withoutTrashed()
  */
 	class StockLog extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @method static \Database\Factories\StockMovementFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement withoutTrashed()
+ */
+	class StockMovement extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -551,6 +606,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User withoutPermission($permissions)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User withoutRole($roles, $guard = null)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User withoutTrashed()
  */
 	class User extends \Eloquent {}
 }
@@ -586,6 +644,9 @@ namespace App\Models{
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
  * @property-read int|null $products_count
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Warehouse onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Warehouse withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Warehouse withoutTrashed()
  */
 	class Warehouse extends \Eloquent {}
 }

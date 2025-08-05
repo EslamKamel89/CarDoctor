@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 /**
  * @property int $id
@@ -57,11 +59,15 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property-read \App\Models\User|null $user
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice whereActualTotal($value)
  * @property-read \App\Models\Debt|null $debt
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Invoice withoutTrashed()
  * @mixin \Eloquent
  */
 class Invoice extends Model {
     /** @use HasFactory<\Database\Factories\InvoiceFactory> */
     use HasFactory;
+    use SoftDeletes;
     protected $fillable = [
         'client_id',
         'client_vehicle_id',

@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 /**
  * @property int $id
@@ -42,11 +44,15 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property-read float $open_debts_amount
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Invoice> $invoices
  * @property-read int|null $invoices_count
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Client onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Client withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Client withoutTrashed()
  * @mixin \Eloquent
  */
 class Client extends Model {
     /** @use HasFactory<\Database\Factories\ClientFactory> */
     use HasFactory;
+    use SoftDeletes;
     protected $fillable = [
         'name_ar',
         'name_en',

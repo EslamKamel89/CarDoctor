@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 /**
  * @property int $id
@@ -37,11 +39,15 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property-read int|null $products_count
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CarModel yearFrom($year)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CarModel yearTo($year)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CarModel onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CarModel withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CarModel withoutTrashed()
  * @mixin \Eloquent
  */
 class CarModel extends Model {
     /** @use HasFactory<\Database\Factories\CarModelFactory> */
     use HasFactory;
+    use SoftDeletes;
     protected $fillable = [
         'brand_id',
         'name_ar',
