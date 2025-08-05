@@ -633,10 +633,10 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement whereUnitCost($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|StockMovement whereWarehouseId($value)
- * @mixin \Eloquent
  * @property-read \App\Models\Product $product
  * @property-read \App\Models\User $recordedBy
  * @property-read \App\Models\Warehouse|null $warehouse
+ * @mixin \Eloquent
  */
 	class StockMovement extends \Eloquent {}
 }

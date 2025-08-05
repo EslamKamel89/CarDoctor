@@ -16,7 +16,15 @@ return new class extends Migration {
             $table->integer('quantity'); // signed: +in, -out
             $table->decimal('unit_cost', 15, 2);
             $table->decimal('total_cost', 15, 2); // quantity × unit_cost
-            $table->string('type'); // purchase, sale, return_from_customer, return_to_supplier, adjustment, write_off, cost_adjustment
+            $table->enum('type', [
+                'purchase',
+                'sale',
+                'return_from_customer',
+                'return_to_supplier',
+                'adjustment',
+                'write_off',
+                'cost_adjustment'
+            ]); // purchase, sale, return_from_customer, return_to_supplier, adjustment, write_off, cost_adjustment
             $table->string('reference_type'); // e.g., App\Models\Invoice
             $table->unsignedBigInteger('reference_id');
             $table->foreignId('recorded_by_user_id')->constrained('users')->cascadeOnDelete();
