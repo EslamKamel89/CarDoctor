@@ -13,6 +13,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('invoice_id')->constrained()->cascadeOnDelete();
             $table->foreignId('client_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
             $table->string('credit_note_number')->unique();
             $table->date('issue_date');
             $table->text('reason_ar');

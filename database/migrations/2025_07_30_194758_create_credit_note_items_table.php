@@ -13,6 +13,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('credit_note_id')->constrained()->cascadeOnDelete();
             $table->foreignId('invoice_item_id')->constrained('invoice_items')->cascadeOnDelete();
+            $table->foreignId('product_id')->constrained('products')->cascadeOnDelete();
             $table->integer('quantity');
             $table->decimal('refunded_amount', 15, 2);
             $table->text('notes')->nullable();

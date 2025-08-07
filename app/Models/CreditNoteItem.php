@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
@@ -44,6 +46,7 @@ class CreditNoteItem extends Model {
     use HasFactory;
     use SoftDeletes;
     protected $fillable = [
+        'product_id',
         'credit_note_id',
         'invoice_item_id',
         'quantity',
@@ -61,6 +64,10 @@ class CreditNoteItem extends Model {
 
     public function invoiceItem(): BelongsTo {
         return $this->belongsTo(InvoiceItem::class);
+    }
+
+    public function product(): HasOne {
+        return   $this->hasOne(Product::class);
     }
 
     public function getProductNameAttribute() {

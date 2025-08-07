@@ -61,6 +61,7 @@ class CreditNote extends Model {
         'reason_en',
         'total_refund_amount',
         'payment_refund_method',
+        'user_id',
     ];
     protected $casts = [
         'issue_date' => 'date',
@@ -73,7 +74,9 @@ class CreditNote extends Model {
     public function client(): BelongsTo {
         return $this->belongsTo(Client::class);
     }
-
+    public function user(): BelongsTo {
+        return $this->belongsTo(User::class);
+    }
     public function items(): HasMany {
         return $this->hasMany(CreditNoteItem::class);
     }
