@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->foreignId('invoice_item_id')->constrained('invoice_items')->cascadeOnDelete();
             $table->integer('quantity');
             $table->decimal('refunded_amount', 15, 2);
+            $table->text('notes')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

@@ -35,6 +35,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem withoutTrashed()
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem whereDeletedAt($value)
+ * @property string|null $notes
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem whereNotes($value)
  * @mixin \Eloquent
  */
 class CreditNoteItem extends Model {
@@ -46,6 +48,7 @@ class CreditNoteItem extends Model {
         'invoice_item_id',
         'quantity',
         'refunded_amount',
+        'notes'
     ];
     protected $casts = [
         'quantity' => 'integer',
