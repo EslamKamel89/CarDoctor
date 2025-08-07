@@ -314,6 +314,7 @@ class FullCarDoctorSeeder extends Seeder {
         \App\Models\CreditNoteItem::create([
             'credit_note_id' => $creditNote->id,
             'invoice_item_id' => $invoice1->items->first()->id,
+            'product_id' => $invoice1->items->first()->product_id,
             'quantity' => 1,
             'refunded_amount' => 120.00,
         ]);

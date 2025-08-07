@@ -39,6 +39,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem whereDeletedAt($value)
  * @property string|null $notes
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem whereNotes($value)
+ * @property int $product_id
+ * @property-read \App\Models\Product|null $product
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem whereProductId($value)
  * @mixin \Eloquent
  */
 class CreditNoteItem extends Model {
