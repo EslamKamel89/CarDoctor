@@ -289,8 +289,10 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote withoutTrashed()
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote whereDeletedAt($value)
- * @mixin \Eloquent
+ * @property int|null $user_id
  * @property-read \App\Models\User|null $user
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote whereUserId($value)
+ * @mixin \Eloquent
  */
 	class CreditNote extends \Eloquent {}
 }
@@ -325,8 +327,10 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem whereDeletedAt($value)
  * @property string|null $notes
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem whereNotes($value)
- * @mixin \Eloquent
+ * @property int $product_id
  * @property-read \App\Models\Product|null $product
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem whereProductId($value)
+ * @mixin \Eloquent
  */
 	class CreditNoteItem extends \Eloquent {}
 }

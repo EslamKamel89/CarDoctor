@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->foreignId('brand_id')->constrained()->restrictOnDelete();
             $table->string('name_ar')->nullable();
             $table->string('name_en')->nullable();
-            $table->json('year_range')->default('[]');
+            $table->json('year_range');
             $table->softDeletes();
             $table->timestamps();
         });
