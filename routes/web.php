@@ -10,6 +10,8 @@ use App\Models\CarModel;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+Route::get('/phpinfo', fn() => phpinfo());
+
 Route::middleware('auth')->group(function () {
     Route::get('/', function () {
         return redirect()->route('dashboard');

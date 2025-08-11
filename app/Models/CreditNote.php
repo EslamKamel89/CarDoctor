@@ -49,6 +49,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property int|null $user_id
  * @property-read \App\Models\User|null $user
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote whereUserId($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\StockMovement> $stockMovements
+ * @property-read int|null $stock_movements_count
  * @mixin \Eloquent
  */
 class CreditNote extends Model {

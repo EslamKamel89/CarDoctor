@@ -564,6 +564,16 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * @method static \Database\Factories\PurchaseFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Purchase newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Purchase newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Purchase query()
+ */
+	class Purchase extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * @property int $id
  * @property int $product_id
  * @property int $warehouse_id
@@ -651,6 +661,33 @@ namespace App\Models{
  * @mixin \Eloquent
  */
 	class StockMovement extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @property-read string $contact_person_name
+ * @property-read string $name
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Purchase> $purchases
+ * @property-read int|null $purchases_count
+ * @method static \Database\Factories\SupplierFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Supplier newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Supplier newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Supplier onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Supplier query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Supplier withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Supplier withoutTrashed()
+ */
+	class Supplier extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @method static \Database\Factories\SupplierReturnFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturn newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturn newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturn query()
+ */
+	class SupplierReturn extends \Eloquent {}
 }
 
 namespace App\Models{
