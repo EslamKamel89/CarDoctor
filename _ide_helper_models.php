@@ -574,27 +574,72 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Purchase whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Purchase whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Purchase whereUpdatedAt($value)
- * @mixin \Eloquent
+ * @property int $supplier_id
+ * @property int|null $user_id
+ * @property string $purchase_number
+ * @property \Illuminate\Support\Carbon $purchase_date
+ * @property numeric $total_amount
+ * @property numeric $discount
+ * @property numeric $final_amount
+ * @property string|null $payment_method
+ * @property string $status
+ * @property string|null $notes
+ * @property string|null $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\PurchaseItem> $items
  * @property-read int|null $items_count
- * @property-read \App\Models\Supplier|null $supplier
+ * @property-read \App\Models\Supplier $supplier
  * @property-read \App\Models\User|null $user
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Purchase whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Purchase whereDiscount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Purchase whereFinalAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Purchase whereNotes($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Purchase wherePaymentMethod($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Purchase wherePurchaseDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Purchase wherePurchaseNumber($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Purchase whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Purchase whereSupplierId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Purchase whereTotalAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Purchase whereUserId($value)
+ * @mixin \Eloquent
  */
 	class Purchase extends \Eloquent {}
 }
 
 namespace App\Models{
 /**
- * @property-read \App\Models\Product|null $product
- * @property-read \App\Models\Purchase|null $purchase
- * @property-read \App\Models\Warehouse|null $warehouse
+ * @property int $id
+ * @property int $purchase_id
+ * @property int $product_id
+ * @property int $warehouse_id
+ * @property int $quantity
+ * @property numeric $unit_cost
+ * @property numeric $total_cost
+ * @property string|null $notes
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Product $product
+ * @property-read \App\Models\Purchase $purchase
+ * @property-read \App\Models\Warehouse $warehouse
  * @method static \Database\Factories\PurchaseItemFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|PurchaseItem newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|PurchaseItem newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|PurchaseItem onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|PurchaseItem query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PurchaseItem whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PurchaseItem whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PurchaseItem whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PurchaseItem whereNotes($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PurchaseItem whereProductId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PurchaseItem wherePurchaseId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PurchaseItem whereQuantity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PurchaseItem whereTotalCost($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PurchaseItem whereUnitCost($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PurchaseItem whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PurchaseItem whereWarehouseId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|PurchaseItem withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|PurchaseItem withoutTrashed()
+ * @mixin \Eloquent
  */
 	class PurchaseItem extends \Eloquent {}
 }
@@ -755,6 +800,12 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturn whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturn whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read string $reason
+ * @property-read \App\Models\Purchase|null $purchase
+ * @property-read \App\Models\User|null $user
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturn onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturn withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturn withoutTrashed()
  */
 	class SupplierReturn extends \Eloquent {}
 }
