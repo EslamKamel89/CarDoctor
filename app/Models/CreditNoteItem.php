@@ -42,6 +42,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property int $product_id
  * @property-read \App\Models\Product|null $product
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem whereProductId($value)
+ * @property bool $is_damaged
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem whereIsDamaged($value)
  * @mixin \Eloquent
  */
 class CreditNoteItem extends Model {
@@ -54,11 +56,13 @@ class CreditNoteItem extends Model {
         'invoice_item_id',
         'quantity',
         'refunded_amount',
+        'is_damaged',
         'notes'
     ];
     protected $casts = [
         'quantity' => 'integer',
         'refunded_amount' => 'decimal:2',
+        'is_damaged' => 'boolean'
     ];
 
     public function creditNote(): BelongsTo {

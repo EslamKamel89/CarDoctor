@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->foreignId('product_id')->constrained('products')->cascadeOnDelete();
             $table->integer('quantity');
             $table->decimal('refunded_amount', 15, 2);
+            $table->boolean('is_damaged')->default(false);
             $table->text('notes')->nullable();
             $table->softDeletes();
             $table->timestamps();
