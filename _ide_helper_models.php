@@ -292,9 +292,9 @@ namespace App\Models{
  * @property int|null $user_id
  * @property-read \App\Models\User|null $user
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote whereUserId($value)
- * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\StockMovement> $stockMovements
  * @property-read int|null $stock_movements_count
+ * @mixin \Eloquent
  */
 	class CreditNote extends \Eloquent {}
 }
@@ -564,12 +564,39 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * @property int $id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Database\Factories\PurchaseFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Purchase newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Purchase newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Purchase query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Purchase whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Purchase whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Purchase whereUpdatedAt($value)
+ * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\PurchaseItem> $items
+ * @property-read int|null $items_count
+ * @property-read \App\Models\Supplier|null $supplier
+ * @property-read \App\Models\User|null $user
  */
 	class Purchase extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @property-read \App\Models\Product|null $product
+ * @property-read \App\Models\Purchase|null $purchase
+ * @property-read \App\Models\Warehouse|null $warehouse
+ * @method static \Database\Factories\PurchaseItemFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PurchaseItem newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PurchaseItem newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PurchaseItem onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PurchaseItem query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PurchaseItem withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PurchaseItem withoutTrashed()
+ */
+	class PurchaseItem extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -665,6 +692,23 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * @property int $id
+ * @property string|null $name_ar
+ * @property string|null $name_en
+ * @property string|null $contact_person_name_ar
+ * @property string|null $contact_person_name_en
+ * @property string|null $mobile
+ * @property string|null $phone
+ * @property string|null $email
+ * @property string|null $tax_id
+ * @property string|null $address_ar
+ * @property string|null $address_en
+ * @property string|null $payment_terms
+ * @property numeric|null $credit_limit
+ * @property string|null $notes
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read string $contact_person_name
  * @property-read string $name
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Purchase> $purchases
@@ -674,18 +718,43 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Supplier newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Supplier onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Supplier query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Supplier whereAddressAr($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Supplier whereAddressEn($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Supplier whereContactPersonNameAr($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Supplier whereContactPersonNameEn($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Supplier whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Supplier whereCreditLimit($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Supplier whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Supplier whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Supplier whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Supplier whereMobile($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Supplier whereNameAr($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Supplier whereNameEn($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Supplier whereNotes($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Supplier wherePaymentTerms($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Supplier wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Supplier whereTaxId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Supplier whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Supplier withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Supplier withoutTrashed()
+ * @mixin \Eloquent
  */
 	class Supplier extends \Eloquent {}
 }
 
 namespace App\Models{
 /**
+ * @property int $id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Database\Factories\SupplierReturnFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturn newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturn newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturn query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturn whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturn whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturn whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 	class SupplierReturn extends \Eloquent {}
 }
