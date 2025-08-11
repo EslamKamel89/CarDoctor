@@ -48,6 +48,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturn whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturn withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturn withoutTrashed()
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\SupplierReturnItem> $items
+ * @property-read int|null $items_count
  * @mixin \Eloquent
  */
 class SupplierReturn extends Model {

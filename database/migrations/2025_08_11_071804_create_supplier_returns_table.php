@@ -10,6 +10,7 @@ return new class extends Migration {
      */
     public function up(): void {
         Schema::create('supplier_returns', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('purchase_id')->constrained()->cascadeOnDelete();
             $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
             $table->string('return_number')->unique(); // e.g., SR-20250810-1234
