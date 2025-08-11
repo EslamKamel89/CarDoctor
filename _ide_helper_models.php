@@ -293,6 +293,8 @@ namespace App\Models{
  * @property-read \App\Models\User|null $user
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNote whereUserId($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\StockMovement> $stockMovements
+ * @property-read int|null $stock_movements_count
  */
 	class CreditNote extends \Eloquent {}
 }
@@ -330,6 +332,8 @@ namespace App\Models{
  * @property int $product_id
  * @property-read \App\Models\Product|null $product
  * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem whereProductId($value)
+ * @property bool $is_damaged
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|CreditNoteItem whereIsDamaged($value)
  * @mixin \Eloquent
  */
 	class CreditNoteItem extends \Eloquent {}

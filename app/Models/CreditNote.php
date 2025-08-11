@@ -87,4 +87,8 @@ class CreditNote extends Model {
     public function getReasonAttribute() {
         return app()->isLocale('ar') ? $this->reason_ar : $this->reason_en;
     }
+    public function stockMovements(): HasMany {
+        return $this->hasMany(StockMovement::class, 'reference_id')
+            ->where('reference_type', self::class);
+    }
 }
