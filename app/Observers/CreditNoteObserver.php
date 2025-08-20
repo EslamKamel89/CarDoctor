@@ -15,21 +15,29 @@ class CreditNoteObserver {
         DB::transaction(function () use ($creditNote) {
             foreach ($creditNote->items as $item) {
                 $originalItem  = $item->invoiceItem;
-                // if (!$originalItem) {
-                //     continue;
-                // }
-                $saleMovement = StockMovement::where('reference_type', InvoiceItem::class)
-                    ->where('reference_id', $originalItem->invoice_id)
-                    ->where('product_id', $item->product_id)
-                    ->where('type', StockMovementType::Sale)
-                    ->first();
+                if (!$originalItem) {
+                    continue;
+                }
+                // $saleMovement = StockMovement::where('reference_type', InvoiceItem::class)
+                //     ->where('reference_id', $originalItem->invoice_id)
+                //     ->where('product_id', $item->product_id)
+                //     ->where('type', StockMovementType::Sale)
+                //     ->first();
                 // if (!$saleMovement) {
                 //     continue;
                 // }
-                $unitCost = $saleMovement->unit_cost;
+                // $unitCost = $saleMovement->unit_cost;
+                $unitCost = $originalItem->unit_cost_at_sale ?? $item->product->current_cost_price;
                 $totalCost = $unitCost * $item->quantity;
                 if ($item->is_damaged) {
-                    // the `is_damaged` column don't exist in the invoice_items table so i created it and added it to the fillable property in the model and to the casts.
+                    $exists = StockMovement::where([
+                        'reference_type' => CreditNote::class,
+                        'reference_id'   => $creditNote->id,
+                        'product_id'     => $item->product_id,
+                        'warehouse_id'   => $originalItem->warehouse_id,
+                        'type'           => StockMovementType::WriteOff,
+                    ])->exists();
+                    if ($exists) continue;
                     StockMovement::create([
                         'product_id' => $item->product_id,
                         'warehouse_id' => $originalItem->warehouse_id,
@@ -43,7 +51,14 @@ class CreditNoteObserver {
                         'notes' => "Damaged return from credit note #{$creditNote->credit_note_number}",
                     ]);
                 } else {
-                    // Part is resalable → return to stock at original COGS
+                    $exists = StockMovement::where([
+                        'reference_type' => CreditNote::class,
+                        'reference_id'   => $creditNote->id,
+                        'product_id'     => $item->product_id,
+                        'warehouse_id'   => $originalItem->warehouse_id,
+                        'type'           => StockMovementType::ReturnFromCustomer,
+                    ])->exists();
+                    if ($exists) continue;
                     StockMovement::create([
                         'product_id' => $item->product_id,
                         'warehouse_id' => $originalItem->warehouse_id,
@@ -66,14 +81,21 @@ class CreditNoteObserver {
 
     public function deleted(CreditNote $creditNote): void {
         StockMovement::where('reference_type', CreditNote::class)
-            ->where('reference_id', $creditNote->id)->delete();
+            ->where('reference_id', $creditNote->id)
+            ->get()
+            ->each(function ($s) {
+                $s->delete();
+            });
     }
 
     public function restored(CreditNote $creditNote): void {
-        StockMovement::where('reference_type', CreditNote::class)
-            ->where('reference_id', $creditNote->id)->update([
-                'deleted_at' => null,
-            ]);
+        StockMovement::withTrashed()
+            ->where('reference_type', CreditNote::class)
+            ->where('reference_id', $creditNote->id)
+            ->get()
+            ->each(function ($s) {
+                $s->restore();
+            });
     }
 
     public function forceDeleted(CreditNote $creditNote): void {

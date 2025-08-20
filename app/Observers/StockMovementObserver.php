@@ -31,13 +31,13 @@ class StockMovementObserver {
             $totalQty +=  $m->quantity;
         }
         $newCost = $totalQty > 0 ? $totalValue / $totalQty : 0;
-        $product::update(['current_cost_price', $newCost]);
+        $product->update(['current_cost_price', $newCost]);
     }
     public function updated(StockMovement $movement): void {
     }
 
     public function deleted(StockMovement $movement): void {
-        $product = $movement->product->decrement('quantity_on_hand', $movement->quantity);
+        $product = $movement->product->increment('quantity_on_hand', -1 * $movement->quantity);
         if (in_array($movement->type, StockMovementType::costAffecting())) {
             $this->recalculateCurrentCostPrice($movement->product_id);
         }

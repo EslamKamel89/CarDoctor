@@ -827,25 +827,48 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturn whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturn withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturn withoutTrashed()
- * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\SupplierReturnItem> $items
  * @property-read int|null $items_count
+ * @mixin \Eloquent
  */
 	class SupplierReturn extends \Eloquent {}
 }
 
 namespace App\Models{
 /**
- * @property-read \App\Models\Product|null $product
- * @property-read \App\Models\PurchaseItem|null $purchaseItem
- * @property-read \App\Models\SupplierReturn|null $supplierReturn
+ * @property int $id
+ * @property int $supplier_return_id
+ * @property int $purchase_item_id
+ * @property int $product_id
+ * @property int $quantity
+ * @property numeric $unit_refund
+ * @property numeric $total_refund
+ * @property bool $is_defective
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Product $product
+ * @property-read \App\Models\PurchaseItem $purchaseItem
+ * @property-read \App\Models\SupplierReturn $supplierReturn
  * @method static \Database\Factories\SupplierReturnItemFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturnItem newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturnItem newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturnItem onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturnItem query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturnItem whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturnItem whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturnItem whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturnItem whereIsDefective($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturnItem whereProductId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturnItem wherePurchaseItemId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturnItem whereQuantity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturnItem whereSupplierReturnId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturnItem whereTotalRefund($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturnItem whereUnitRefund($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturnItem whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturnItem withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SupplierReturnItem withoutTrashed()
+ * @mixin \Eloquent
  */
 	class SupplierReturnItem extends \Eloquent {}
 }

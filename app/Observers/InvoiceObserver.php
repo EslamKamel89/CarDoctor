@@ -16,41 +16,58 @@ class InvoiceObserver {
     }
 
     public function updated(Invoice $invoice): void {
-        if (!$invoice->isDirty() && $invoice->status != 'paid') {
-            return;
+        if ($invoice->wasChanged('status') && $invoice->status === 'paid') {
+            $this->createSaleStockMovements($invoice);
         }
-        $this->createSaleStockMovements($invoice);
     }
 
     public function deleted(Invoice $invoice): void {
-        DB::table('stock_movements')
-            ->where('reference_type', Invoice::class)
+        StockMovement::where('reference_type', Invoice::class)
             ->where('reference_id', $invoice->id)
-            ->update([
-                'deleted_at' => now(),
-            ]);
+            ->get()->each(function ($m) {
+                $m->delete();
+            });
     }
 
     public function restored(Invoice $invoice): void {
-        DB::table('stock_movements')
-            ->where('reference_type', Invoice::class)
+        StockMovement::where('reference_type', Invoice::class)
             ->where('reference_id', $invoice->id)
-            ->update([
-                'deleted_at' => null,
-            ]);
+            ->get()->each(function ($m) {
+                $m->restore();
+            });
     }
 
     public function forceDeleted(Invoice $invoice): void {
     }
     protected function createSaleStockMovements(Invoice $invoice): void {
+        $invoice->loadMissing('items.product');
         DB::transaction(function () use ($invoice) {
             foreach ($invoice->items as $item) {
+                $exists = StockMovement::where([
+                    'reference_type' => Invoice::class,
+                    'reference_id'   => $invoice->id,
+                    'product_id'     => $item->product_id,
+                    'warehouse_id'   => $item->warehouse_id,
+                    'type'           => StockMovementType::Sale,
+                ])->exists();
+                if ($exists) {
+                    continue;
+                }
+                $unitCost = $item->product->current_cost_price;
+                $totalCost = $item->quantity * $unitCost;
+
+                if ($item->unit_cost_at_sale !== $unitCost || $item->total_cost_at_sale !== $totalCost) {
+                    $item->forceFill([
+                        'unit_cost_at_sale' => $unitCost,
+                        'total_cost_at_sale' => $totalCost,
+                    ])->save();
+                }
                 StockMovement::create([
                     'product_id' => $item->product_id,
                     'warehouse_id' => $item->warehouse_id,
                     'quantity' => -$item->quantity,
-                    'unit_cost' => $item->product->current_cost_price,
-                    'total_cost' => $item->quantity * $item->product->current_cost_price,
+                    'unit_cost' => $unitCost,
+                    'total_cost' => $totalCost,
                     'type' => StockMovementType::Sale,
                     'reference_type' => Invoice::class,
                     'reference_id' => $invoice->id,
