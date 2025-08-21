@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Observers\PurchaseItemObserver;
+use App\Observers\PurchaseObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -42,6 +45,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|PurchaseItem withoutTrashed()
  * @mixin \Eloquent
  */
+#[ObservedBy(PurchaseItemObserver::class)]
 class PurchaseItem extends Model {
     /** @use HasFactory<\Database\Factories\PurchaseItemFactory> */
     use HasFactory, SoftDeletes;

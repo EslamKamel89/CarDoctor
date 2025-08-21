@@ -32,7 +32,10 @@ trait BuildsInventoryScenario {
             'unit_cost'   => $unitCost,
             'total_cost'  => $qty * $unitCost,
         ]);
-        return $purchase->fresh('items');
+
+        $purchase =  $purchase->fresh('items');
+        info($purchase);
+        return $purchase;
     }
     protected function sell(Product $p, int $qty): Invoice {
         $invoice = Invoice::factory()->create([

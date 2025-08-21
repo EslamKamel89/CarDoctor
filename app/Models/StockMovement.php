@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Enums\StockMovementType;
+use App\Observers\StockMovementObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -50,6 +52,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property-read \App\Models\Warehouse|null $warehouse
  * @mixin \Eloquent
  */
+#[ObservedBy(StockMovementObserver::class)]
 class StockMovement extends Model {
     /** @use HasFactory<\Database\Factories\StockMovementFactory> */
     use HasFactory;

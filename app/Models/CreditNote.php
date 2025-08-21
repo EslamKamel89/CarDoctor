@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Observers\CreditNoteObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -53,6 +55,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property-read int|null $stock_movements_count
  * @mixin \Eloquent
  */
+#[ObservedBy(CreditNoteObserver::class)]
 class CreditNote extends Model {
     /** @use HasFactory<\Database\Factories\CreditNoteFactory> */
     use HasFactory;

@@ -468,6 +468,10 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|InvoiceItem withoutTrashed()
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @method static \Illuminate\Database\Eloquent\Builder<static>|InvoiceItem whereDeletedAt($value)
+ * @property numeric|null $unit_cost_at_sale
+ * @property numeric|null $total_cost_at_sale
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|InvoiceItem whereTotalCostAtSale($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|InvoiceItem whereUnitCostAtSale($value)
  * @mixin \Eloquent
  */
 	class InvoiceItem extends \Eloquent {}

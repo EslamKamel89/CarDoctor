@@ -36,6 +36,7 @@ return new class extends Migration {
             $table->index(['reference_type', 'reference_id']);
             $table->index('type');
             $table->index(['product_id', 'quantity']); // for stock-on-hand
+            $table->unique(['reference_type', 'reference_id', 'type'], 'stock_movements_ref_unique');
         });
     }
 
