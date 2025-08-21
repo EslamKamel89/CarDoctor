@@ -22,7 +22,7 @@ trait BuildsInventoryScenario {
     protected function purchase(Product $p, int $qty, float $unitCost): Purchase {
         $purchase = Purchase::factory()->create([
             'user_id'      => $this->tester()->id,
-            'status'       => 'received', // important: triggers observer
+            'status'       => 'received',
         ]);
         PurchaseItem::factory()->create([
             'purchase_id' => $purchase->id,
